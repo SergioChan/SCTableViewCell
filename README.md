@@ -1,7 +1,7 @@
 # SCTableViewCell
 Swipe-to-Delete Effects like iOS Native Mail App
 
-## 效果 Visual
+## 效果 Visual Effects
 
 这是一个模仿iOS8中的邮箱里面的cell删除动效以及滑动右侧菜单按钮效果的开源库。
 
