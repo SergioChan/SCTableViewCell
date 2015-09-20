@@ -9,6 +9,12 @@
 #import "SCTableViewCell.h"
 #import <objc/runtime.h>
 
+@interface SCTableViewCell()
+{
+    BOOL _isMoving;
+}
+@end
+
 @implementation SCTableViewCell
 
 - (void)awakeFromNib {
@@ -45,6 +51,7 @@
         [self addSubview:_actionButton_1];
         [self addSubview:_actionButton_2];
         [self addSubview:_actionButton_3];
+        _isMoving = NO;
     }
     return self;
 }
@@ -63,7 +70,12 @@
 
 - (void)layoutSubviews
 {
+    if(_isMoving)
+    {
+        return;
+    }
     [super layoutSubviews];
+    //self.contentView.frame = CGRectMake(0.0f, 0.0f, self.contentView.width, self.contentView.height);
     _actionButton_1.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
     _actionButton_2.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
     _actionButton_3.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
@@ -85,6 +97,7 @@
                 UIView *mainTableView = self.superview.superview;
                 if([mainTableView isKindOfClass:[UITableView class]])
                 {
+                    _isMoving = YES;
                     self.touchBeganPointX = [touch locationInView:mainTableView].x;
                     [UIView animateWithDuration:0.2f animations:^{
                         self.contentView.frame = CGRectMake(0.0f, self.contentView.top, self.contentView.width, self.contentView.height);
@@ -173,6 +186,7 @@
         {
             if(touch.phase == UITouchPhaseEnded || touch.phase == UITouchPhaseCancelled)
             {
+                _isMoving = NO;
                 CGFloat CurrentXIndex = [touch locationInView:mainTableView].x;
                 if(CurrentXIndex>ScreenWidth/3.0f)
                 {
@@ -185,15 +199,12 @@
                 }
                 else
                 {
-                    if(self.contentView.left < 0)
-                    {
                         [UIView animateWithDuration:0.2f animations:^{
                             self.contentView.frame = CGRectMake(- ScreenWidth/2.0f, self.contentView.top, self.contentView.width, self.contentView.height);
                             self.actionButton_1.frame = CGRectMake(ScreenWidth / 2.0f, _actionButton_1.top, self.buttonWidth, _actionButton_1.height);
                             self.actionButton_2.frame = CGRectMake(ScreenWidth * 2.0f / 3.0f, _actionButton_2.top, self.buttonWidth, _actionButton_2.height);
                             self.actionButton_3.frame = CGRectMake(ScreenWidth * 5.0f / 6.0f, _actionButton_3.top, self.buttonWidth, _actionButton_2.height);
                         }];
-                    }
                 }
             }
         }
@@ -212,6 +223,7 @@
         {
             if(touch.phase == UITouchPhaseEnded || touch.phase == UITouchPhaseCancelled)
             {
+                _isMoving = NO;
                 NSLog(@"cancelled!");
                 CGFloat CurrentXIndex = [touch locationInView:mainTableView].x;
                 if(CurrentXIndex>ScreenWidth/3.0f)
