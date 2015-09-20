@@ -43,18 +43,24 @@
         _actionButton_1.tag = 0;
         [_actionButton_1 addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [_actionButton_1 setTitle:@"更多" forState:UIControlStateNormal];
+        _actionButton_1.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        _actionButton_1.contentEdgeInsets = UIEdgeInsetsMake(0,15,0,0);
         
         self.actionButton_2 = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height)];
         _actionButton_2.backgroundColor = [UIColor orangeColor];
         _actionButton_2.tag = 1;
         [_actionButton_2 addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [_actionButton_2 setTitle:@"旗标" forState:UIControlStateNormal];
+        _actionButton_2.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        _actionButton_2.contentEdgeInsets = UIEdgeInsetsMake(0,15,0,0);
         
         self.actionButton_3 = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height)];
         _actionButton_3.backgroundColor = [UIColor redColor];
         _actionButton_3.tag = 2;
         [_actionButton_3 addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [_actionButton_3 setTitle:@"删除" forState:UIControlStateNormal];
+        _actionButton_3.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        _actionButton_3.contentEdgeInsets = UIEdgeInsetsMake(0,15,0,0);
         
         [self addSubview:_actionButton_1];
         [self addSubview:_actionButton_2];
@@ -137,13 +143,40 @@
                 {
                     if(delta > ScreenWidth / 2.0f)
                     {
-                        CGFloat t_delta = (delta - (ScreenWidth / 2.0f))/ 3.0f;
-                        [UIView animateWithDuration:self.dragAnimationDuration animations:^{
-                            self.contentView.frame = CGRectMake(-delta, self.contentView.top, self.contentView.width, self.contentView.height);
-                            self.actionButton_1.frame = CGRectMake(ScreenWidth - delta, _actionButton_1.top, self.buttonWidth + t_delta, _actionButton_1.height);
-                            self.actionButton_2.frame = CGRectMake(ScreenWidth - delta * 2.0f/3.0f , _actionButton_2.top, self.buttonWidth + t_delta, _actionButton_2.height);
-                            self.actionButton_3.frame = CGRectMake(ScreenWidth - delta / 3.0f, _actionButton_3.top, self.buttonWidth +t_delta, _actionButton_3.height);
-                        }];
+                        if(CurrentXIndex < 50.0f)
+                        {
+                            // 最后一个button需要变宽度了
+                            if(delta > ScreenWidth / 2.0f)
+                            {
+                                CGFloat t_delta = (delta - (ScreenWidth / 2.0f))/ 3.0f;
+                                [UIView animateWithDuration:self.dragAnimationDuration animations:^{
+                                    self.contentView.frame = CGRectMake(-delta, self.contentView.top, self.contentView.width, self.contentView.height);
+                                    self.actionButton_1.frame = CGRectMake(ScreenWidth - delta, _actionButton_1.top, self.buttonWidth + t_delta, _actionButton_1.height);
+                                    self.actionButton_2.frame = CGRectMake(ScreenWidth - delta * 2.0f/3.0f , _actionButton_2.top, self.buttonWidth + t_delta, _actionButton_2.height);
+                                    self.actionButton_3.frame = CGRectMake(ScreenWidth - delta, _actionButton_3.top,(self.buttonWidth + t_delta ) * 3.0f, _actionButton_3.height);
+                                }];
+                            }
+                            else
+                            {
+                                // 位移量超过0像素才移动，这是保证只有右边的区域会出现
+                                [UIView animateWithDuration:self.dragAnimationDuration animations:^{
+                                    self.contentView.frame = CGRectMake(-delta, self.contentView.top, self.contentView.width, self.contentView.height);
+                                    self.actionButton_1.frame = CGRectMake(ScreenWidth - delta, _actionButton_1.top, self.buttonWidth , _actionButton_1.height);
+                                    self.actionButton_2.frame = CGRectMake(ScreenWidth - delta * 2.0f/3.0f, _actionButton_2.top, self.buttonWidth , _actionButton_2.height);
+                                    self.actionButton_3.frame = CGRectMake(ScreenWidth - delta, _actionButton_3.top,self.buttonWidth * 3.0f, _actionButton_3.height);
+                                }];
+                            }
+                        }
+                        else
+                        {
+                            CGFloat t_delta = (delta - (ScreenWidth / 2.0f))/ 3.0f;
+                            [UIView animateWithDuration:self.dragAnimationDuration animations:^{
+                                self.contentView.frame = CGRectMake(-delta, self.contentView.top, self.contentView.width, self.contentView.height);
+                                self.actionButton_1.frame = CGRectMake(ScreenWidth - delta, _actionButton_1.top, self.buttonWidth + t_delta, _actionButton_1.height);
+                                self.actionButton_2.frame = CGRectMake(ScreenWidth - delta * 2.0f/3.0f , _actionButton_2.top, self.buttonWidth + t_delta, _actionButton_2.height);
+                                self.actionButton_3.frame = CGRectMake(ScreenWidth - delta / 3.0f, _actionButton_3.top, self.buttonWidth +t_delta, _actionButton_3.height);
+                            }];
+                        }
                     }
                     else
                     {
@@ -189,6 +222,17 @@
                 CGFloat CurrentXIndex = [touch locationInView:self.tableView].x;
                 CGFloat PreviousXIndex = [touch previousLocationInView:self.tableView].x;
                 NSLog(@"end ! --(%f)-- %f",CurrentXIndex, PreviousXIndex - CurrentXIndex);
+                
+                // 判断特殊的删除情况
+                if(self.actionButton_3.width > self.buttonWidth * 3.0f)
+                {
+                    if(self.deleteRowHandler)
+                    {
+                        self.deleteRowHandler();
+                    }
+                    return;
+                }
+                
                 if(fabs(PreviousXIndex - CurrentXIndex) < 3.0f)
                 {
                     // 并没有怎么移动

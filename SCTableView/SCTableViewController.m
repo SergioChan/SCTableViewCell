@@ -10,6 +10,7 @@
 #import "SCTableViewCell.h"
 
 @interface SCTableViewController ()
+@property (nonatomic, strong) NSMutableArray *data;
 @end
 
 @implementation SCTableViewController
@@ -17,7 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"SCTableViewCell";
+    NSDictionary * dict=[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    self.navigationController.navigationBar.titleTextAttributes = dict;
+    [self.navigationController.navigationBar setTranslucent:NO];
+    self.navigationController.navigationBar.barTintColor = [UIColor lightGrayColor];
     [self hideExtraCellLine];
+    self.data = [NSMutableArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",nil];
     self.view.backgroundColor = [UIColor lightGrayColor];
 }
 
@@ -40,7 +46,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return self.data.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -54,7 +60,13 @@
     {
         cell = [[SCTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reuseIdentifier" inTableView:self.tableView withSCStyle:SCTableViewCellStyleRight];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.text = @"这是测试文字这是测试文字这是测试文字这是测试文字这是测试文字";
+        NSString *item = [self.data objectAtIndex:indexPath.row];
+        cell.textLabel.text = item;
+        cell.deleteRowHandler = ^{
+            NSInteger index = [self.data indexOfObject:item];
+            [self.data removeObject:item];
+            [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+        };
     }
     return cell;
 }

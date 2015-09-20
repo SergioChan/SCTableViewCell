@@ -26,9 +26,11 @@ typedef NS_ENUM(NSInteger, SCTableViewCellStyle) {
 @property (nonatomic) CGFloat resetAnimationDuration;
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic,strong) UIButton *actionButton_1;
-@property (nonatomic,strong) UIButton *actionButton_2;
-@property (nonatomic,strong) UIButton *actionButton_3;
+@property (nonatomic, strong) UIButton *actionButton_1;
+@property (nonatomic, strong) UIButton *actionButton_2;
+@property (nonatomic, strong) UIButton *actionButton_3;
+
+@property (nonatomic, copy) void (^deleteRowHandler)(void);
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier inTableView:(UITableView *)tableView withSCStyle:(SCTableViewCellStyle)sc_style;
 @end
