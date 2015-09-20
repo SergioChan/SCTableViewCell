@@ -19,16 +19,17 @@ typedef NS_ENUM(NSInteger, SCTableViewCellStyle) {
 
 @interface SCTableViewCell : UITableViewCell
 
-@property (nonatomic) CGFloat touchBeganPointX;
-@property (nonatomic) CGFloat buttonWidth;
-
+/**
+ *  滑动过程中的动画刷新间隔，减小这个值会加速滑动的动效，默认值是0.2s
+ *  Duration of dragging animation, set it lower to increase the speed of dragging, default is 0.2s
+ */
 @property (nonatomic) CGFloat dragAnimationDuration;
-@property (nonatomic) CGFloat resetAnimationDuration;
 
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) UIButton *actionButton_1;
-@property (nonatomic, strong) UIButton *actionButton_2;
-@property (nonatomic, strong) UIButton *actionButton_3;
+/**
+ *  重置动画的时长，设置的更大能够获得更好的用户体验，默认值是0.4s
+ *  Duration of reset animation of buttons, set it higher to get better user experience, default is 0.4s
+ */
+@property (nonatomic) CGFloat resetAnimationDuration;
 
 @property (nonatomic, copy) void (^deleteRowHandler)(void);
 

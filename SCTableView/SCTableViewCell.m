@@ -7,13 +7,28 @@
 //
 
 #import "SCTableViewCell.h"
-#import <objc/runtime.h>
+
+#define INDEX_X_FOR_DELETING 50.0f
 
 @interface SCTableViewCell()
 {
     BOOL _isMoving;
     BOOL _hasMoved;
 }
+@property (nonatomic) SCTableViewCellStyle style;
+
+@property (nonatomic, strong) NSMutableArray *rightActionButtons;
+@property (nonatomic, strong) NSMutableArray *leftActionButtons;
+
+@property (nonatomic) CGFloat touchBeganPointX;
+@property (nonatomic) CGFloat buttonWidth;
+
+// temporarily using
+@property (nonatomic, strong) UIButton *actionButton_1;
+@property (nonatomic, strong) UIButton *actionButton_2;
+@property (nonatomic, strong) UIButton *actionButton_3;
+
+@property (nonatomic, strong) UITableView *tableView;
 @end
 
 @implementation SCTableViewCell
@@ -27,6 +42,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self)
     {
+        self.style = sc_style;
         self.backgroundColor = [UIColor clearColor];
         self.contentView.backgroundColor = [UIColor whiteColor];
         self.touchBeganPointX = 0.0f;
@@ -115,8 +131,11 @@
             }
         }
     }
-
-    //[super touchesBegan:touches withEvent:event];
+    else
+    {
+        [super touchesBegan:touches withEvent:event];
+        return;
+    }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -143,7 +162,7 @@
                 {
                     if(delta > ScreenWidth / 2.0f)
                     {
-                        if(CurrentXIndex < 50.0f)
+                        if(CurrentXIndex < INDEX_X_FOR_DELETING)
                         {
                             // 最后一个button需要变宽度了
                             if(delta > ScreenWidth / 2.0f)
@@ -192,7 +211,6 @@
             }
             else
             {
-                NSLog(@"phase:%ld",touch.phase);
                 [super touchesMoved:touches withEvent:event];
             }
         }
@@ -233,38 +251,22 @@
                     return;
                 }
                 
-                if(fabs(PreviousXIndex - CurrentXIndex) < 3.0f)
+                if(fabs(PreviousXIndex - CurrentXIndex) <= 3.0f)
                 {
                     // 并没有怎么移动
-                    if(self.contentView.left < - ScreenWidth/2.0f)
+                    if(self.contentView.left < - ScreenWidth / 2.0f)
                     {
                         // 需要还原到显示的位置
                         if(!_hasMoved)
                         {
                             return;
                         }
-                        [UIView animateWithDuration:self.resetAnimationDuration animations:^{
-                            self.contentView.frame = CGRectMake(- ScreenWidth/2.0f, self.contentView.top, self.contentView.width, self.contentView.height);
-                            self.actionButton_1.frame = CGRectMake(ScreenWidth / 2.0f, _actionButton_1.top, self.buttonWidth, _actionButton_1.height);
-                            self.actionButton_2.frame = CGRectMake(ScreenWidth * 2.0f / 3.0f, _actionButton_2.top, self.buttonWidth, _actionButton_2.height);
-                            self.actionButton_3.frame = CGRectMake(ScreenWidth * 5.0f / 6.0f, _actionButton_3.top, self.buttonWidth, _actionButton_3.height);
-                        } completion:^(BOOL finished) {
-                            _isMoving = NO;
-                            _hasMoved = NO;
-                        }];
+                        [self resetButtonsToDisplayPosition];
                     }
                     else
                     {
                         // 需要还原到初始位置
-                        [UIView animateWithDuration:self.resetAnimationDuration animations:^{
-                            self.contentView.frame = CGRectMake(0.0f, self.contentView.top, self.contentView.width, self.contentView.height);
-                            self.actionButton_1.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
-                            self.actionButton_2.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
-                            self.actionButton_3.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
-                        } completion:^(BOOL finished) {
-                            _isMoving = NO;
-                            _hasMoved = NO;
-                        }];
+                        [self resetButtonsToOriginPosition];
                     }
                 }
                 else
@@ -272,15 +274,7 @@
                     if(CurrentXIndex > ScreenWidth / 2.0f)
                     {
                         // 需要还原到初始位置
-                        [UIView animateWithDuration:self.resetAnimationDuration animations:^{
-                            self.contentView.frame = CGRectMake(0.0f, self.contentView.top, self.contentView.width, self.contentView.height);
-                            self.actionButton_1.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
-                            self.actionButton_2.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
-                            self.actionButton_3.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
-                        } completion:^(BOOL finished) {
-                            _isMoving = NO;
-                            _hasMoved = NO;
-                        }];
+                        [self resetButtonsToOriginPosition];
                     }
                     else
                     {
@@ -289,20 +283,15 @@
                         {
                             return;
                         }
-                        [UIView animateWithDuration:self.resetAnimationDuration animations:^{
-                            self.contentView.frame = CGRectMake(- ScreenWidth/2.0f, self.contentView.top, self.contentView.width, self.contentView.height);
-                            self.actionButton_1.frame = CGRectMake(ScreenWidth / 2.0f, _actionButton_1.top, self.buttonWidth, _actionButton_1.height);
-                            self.actionButton_2.frame = CGRectMake(ScreenWidth * 2.0f / 3.0f, _actionButton_2.top, self.buttonWidth, _actionButton_2.height);
-                            self.actionButton_3.frame = CGRectMake(ScreenWidth * 5.0f / 6.0f, _actionButton_3.top, self.buttonWidth, _actionButton_3.height);
-                        } completion:^(BOOL finished) {
-                            _isMoving = NO;
-                            _hasMoved = NO;
-                        }];
+                        [self resetButtonsToDisplayPosition];
                     }
                 }
             }
         }
-        //[super touchesEnded:touches withEvent:event];
+    }
+    else
+    {
+        [super touchesEnded:touches withEvent:event];
         return;
     }
 }
@@ -318,35 +307,47 @@
             {
                 NSLog(@"cancelled!");
                 CGFloat CurrentXIndex = [touch locationInView:self.tableView].x;
-                if(CurrentXIndex>ScreenWidth/2.0f)
+                if(CurrentXIndex > ScreenWidth/2.0f)
                 {
-                    [UIView animateWithDuration:self.resetAnimationDuration animations:^{
-                        self.contentView.frame = CGRectMake(0.0f, self.contentView.top, self.contentView.width, self.contentView.height);
-                        self.actionButton_1.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
-                        self.actionButton_2.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
-                        self.actionButton_3.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
-                    } completion:^(BOOL finished) {
-                        _isMoving = NO;
-                        _hasMoved = NO;
-                    }];
+                    [self resetButtonsToOriginPosition];
                 }
                 else
                 {
-                    [UIView animateWithDuration:self.resetAnimationDuration animations:^{
-                        self.contentView.frame = CGRectMake(- ScreenWidth/2.0f, self.contentView.top, self.contentView.width, self.contentView.height);
-                        self.actionButton_1.frame = CGRectMake(ScreenWidth / 2.0f, _actionButton_1.top, self.buttonWidth, _actionButton_1.height);
-                        self.actionButton_2.frame = CGRectMake(ScreenWidth * 2.0f / 3.0f, _actionButton_2.top, self.buttonWidth, _actionButton_2.height);
-                        self.actionButton_3.frame = CGRectMake(ScreenWidth * 5.0f / 6.0f, _actionButton_3.top, self.buttonWidth, _actionButton_2.height);
-                    } completion:^(BOOL finished) {
-                        _isMoving = NO;
-                        _hasMoved = NO;
-                    }];
+                    [self resetButtonsToDisplayPosition];
                 }
             }
         }
-        //[super touchesCancelled:touches withEvent:event];
+    }
+    else
+    {
+        [super touchesCancelled:touches withEvent:event];
         return;
     }
 }
 
+- (void)resetButtonsToOriginPosition
+{
+    [UIView animateWithDuration:self.resetAnimationDuration animations:^{
+        self.contentView.frame = CGRectMake(0.0f, self.contentView.top, self.contentView.width, self.contentView.height);
+        self.actionButton_1.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
+        self.actionButton_2.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
+        self.actionButton_3.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
+    } completion:^(BOOL finished) {
+        _isMoving = NO;
+        _hasMoved = NO;
+    }];
+}
+
+- (void)resetButtonsToDisplayPosition
+{
+    [UIView animateWithDuration:self.resetAnimationDuration animations:^{
+        self.contentView.frame = CGRectMake(- ScreenWidth/2.0f, self.contentView.top, self.contentView.width, self.contentView.height);
+        self.actionButton_1.frame = CGRectMake(ScreenWidth / 2.0f, _actionButton_1.top, self.buttonWidth, _actionButton_1.height);
+        self.actionButton_2.frame = CGRectMake(ScreenWidth * 2.0f / 3.0f, _actionButton_2.top, self.buttonWidth, _actionButton_2.height);
+        self.actionButton_3.frame = CGRectMake(ScreenWidth * 5.0f / 6.0f, _actionButton_3.top, self.buttonWidth, _actionButton_2.height);
+    } completion:^(BOOL finished) {
+        _isMoving = NO;
+        _hasMoved = NO;
+    }];
+}
 @end
