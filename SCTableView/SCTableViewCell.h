@@ -9,10 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "UIViewExt.h"
 #import <Foundation/Foundation.h>
+typedef NS_ENUM(NSInteger, SCTableViewCellStyle) {
+    SCTableViewCellStyleDefault = 0,
+    SCTableViewCellStyleRight,
+    SCTableViewCellStyleLeft,
+    SCTableViewCellStyleBoth
+};
+
 @interface SCTableViewCell : UITableViewCell
 
-@property (nonatomic,strong) id deleteConfirmationView;
 @property (nonatomic) CGFloat touchBeganPointX;
+@property (nonatomic) CGFloat buttonWidth;
 
 @property (nonatomic,strong) UIButton *actionButton_1;
 @property (nonatomic,strong) UIButton *actionButton_2;

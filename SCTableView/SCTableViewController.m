@@ -8,7 +8,6 @@
 
 #import "SCTableViewController.h"
 #import "SCTableViewCell.h"
-#import "SCNewTableViewCell.h"
 
 @interface SCTableViewController ()
 
@@ -18,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"SCTableViewCell";
     [self hideExtraCellLine];
     self.view.backgroundColor = [UIColor lightGrayColor];
     
@@ -63,6 +63,7 @@
     {
         cell = [[SCTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reuseIdentifier"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textLabel.text = @"这是测试文字这是测试文字这是测试文字这是测试文字这是测试文字";
     }
     return cell;
 }
