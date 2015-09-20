@@ -10,7 +10,6 @@
 #import "SCTableViewCell.h"
 
 @interface SCTableViewController ()
-
 @end
 
 @implementation SCTableViewController
@@ -20,12 +19,6 @@
     self.title = @"SCTableViewCell";
     [self hideExtraCellLine];
     self.view.backgroundColor = [UIColor lightGrayColor];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void) hideExtraCellLine
@@ -43,12 +36,10 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
     return 5;
 }
 
@@ -61,7 +52,7 @@
     SCTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier"];
     if(!cell)
     {
-        cell = [[SCTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reuseIdentifier"];
+        cell = [[SCTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reuseIdentifier" inTableView:self.tableView withSCStyle:SCTableViewCellStyleRight];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.text = @"这是测试文字这是测试文字这是测试文字这是测试文字这是测试文字";
     }
@@ -105,11 +96,6 @@
 //    
 //    return @[test1,test2,test3];
 //}
-
-- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return YES;
-}
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
