@@ -89,30 +89,30 @@
         {
             if(touch.phase != UITouchPhaseBegan)
             {
-                [super touchesBegan:touches withEvent:event];
+                //[super touchesBegan:touches withEvent:event];
                 return;
             }
             else
             {
+                NSLog(@"begin!");
                 UIView *mainTableView = self.superview.superview;
                 if([mainTableView isKindOfClass:[UITableView class]])
                 {
-                    _isMoving = YES;
                     self.touchBeganPointX = [touch locationInView:mainTableView].x;
                     [UIView animateWithDuration:0.2f animations:^{
                         self.contentView.frame = CGRectMake(0.0f, self.contentView.top, self.contentView.width, self.contentView.height);
                         self.actionButton_1.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
                         self.actionButton_2.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
                         self.actionButton_3.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
+                    } completion:^(BOOL finished) {
+                        _isMoving = YES;
                     }];
                 }
-                [super touchesBegan:touches withEvent:event];
-                return;
             }
         }
     }
 
-    [super touchesBegan:touches withEvent:event];
+    //[super touchesBegan:touches withEvent:event];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -186,8 +186,8 @@
         {
             if(touch.phase == UITouchPhaseEnded || touch.phase == UITouchPhaseCancelled)
             {
-                _isMoving = NO;
                 CGFloat CurrentXIndex = [touch locationInView:mainTableView].x;
+                NSLog(@"end!");
                 if(CurrentXIndex>ScreenWidth/3.0f)
                 {
                     [UIView animateWithDuration:0.2f animations:^{
@@ -195,20 +195,52 @@
                         self.actionButton_1.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
                         self.actionButton_2.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
                         self.actionButton_3.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
+                    } completion:^(BOOL finished) {
+                        if(finished)
+                        {
+                            // 重置动画完成后重置界面状态
+                            self.touchBeganPointX = 0.0f;
+                           _isMoving = NO;
+                        }
                     }];
                 }
                 else
                 {
+                    if(_isMoving)
+                    {
                         [UIView animateWithDuration:0.2f animations:^{
                             self.contentView.frame = CGRectMake(- ScreenWidth/2.0f, self.contentView.top, self.contentView.width, self.contentView.height);
                             self.actionButton_1.frame = CGRectMake(ScreenWidth / 2.0f, _actionButton_1.top, self.buttonWidth, _actionButton_1.height);
                             self.actionButton_2.frame = CGRectMake(ScreenWidth * 2.0f / 3.0f, _actionButton_2.top, self.buttonWidth, _actionButton_2.height);
-                            self.actionButton_3.frame = CGRectMake(ScreenWidth * 5.0f / 6.0f, _actionButton_3.top, self.buttonWidth, _actionButton_2.height);
+                            self.actionButton_3.frame = CGRectMake(ScreenWidth * 5.0f / 6.0f, _actionButton_3.top, self.buttonWidth, _actionButton_3.height);
+                        } completion:^(BOOL finished) {
+                            if(finished)
+                            {
+                                self.touchBeganPointX = 0.0f;
+                                _isMoving = NO;
+                            }
                         }];
+                    }
+                    else
+                    {
+                        [UIView animateWithDuration:0.2f animations:^{
+                            self.contentView.frame = CGRectMake(0.0f, self.contentView.top, self.contentView.width, self.contentView.height);
+                            self.actionButton_1.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
+                            self.actionButton_2.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
+                            self.actionButton_3.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
+                        } completion:^(BOOL finished) {
+                            if(finished)
+                            {
+                                // 重置动画完成后重置界面状态
+                                self.touchBeganPointX = 0.0f;
+                                _isMoving = NO;
+                            }
+                        }];
+                    }
                 }
             }
         }
-        [super touchesEnded:touches withEvent:event];
+        //[super touchesEnded:touches withEvent:event];
         return;
     }
 }
@@ -223,7 +255,6 @@
         {
             if(touch.phase == UITouchPhaseEnded || touch.phase == UITouchPhaseCancelled)
             {
-                _isMoving = NO;
                 NSLog(@"cancelled!");
                 CGFloat CurrentXIndex = [touch locationInView:mainTableView].x;
                 if(CurrentXIndex>ScreenWidth/3.0f)
@@ -233,6 +264,12 @@
                         self.actionButton_1.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
                         self.actionButton_2.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
                         self.actionButton_3.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
+                    } completion:^(BOOL finished) {
+                        if(finished)
+                        {
+                            self.touchBeganPointX = 0.0f;
+                            _isMoving = NO;
+                        }
                     }];
                 }
                 else
@@ -242,11 +279,17 @@
                         self.actionButton_1.frame = CGRectMake(ScreenWidth / 2.0f, _actionButton_1.top, self.buttonWidth, _actionButton_1.height);
                         self.actionButton_2.frame = CGRectMake(ScreenWidth * 2.0f / 3.0f, _actionButton_2.top, self.buttonWidth, _actionButton_2.height);
                         self.actionButton_3.frame = CGRectMake(ScreenWidth * 5.0f / 6.0f, _actionButton_3.top, self.buttonWidth, _actionButton_2.height);
+                    } completion:^(BOOL finished) {
+                        if(finished)
+                        {
+                            self.touchBeganPointX = 0.0f;
+                            _isMoving = NO;
+                        }
                     }];
                 }
             }
         }
-        [super touchesCancelled:touches withEvent:event];
+        //[super touchesCancelled:touches withEvent:event];
         return;
     }
 }
