@@ -73,15 +73,18 @@ typedef NS_ENUM(NSInteger, SCTableViewCellStyle) {
     SCTableViewCellStyleBoth    // table view cell with both side button menu
 };
 ```
-
-`SCTableViewCellStyleDefault`是和其他的cell没有区别的cell，不会触发菜单的动画，你也可以自己定义cell上的手势操作，这个库不会做其他操作。`SCTableViewCellStyleRight`和`SCTableViewCellStyleLeft`就代表着只开放右侧或左侧滑动菜单，在邮箱中你也可以看到不管是左侧还是右侧你都能滑出一个自定义的菜单，如果你想要实现左右都能滑出菜单，则使用`SCTableViewCellStyleBoth`。
+### 样式 Style
+**SCTableViewCellStyleDefault**是和其他的cell没有区别的cell，不会触发菜单的动画，你也可以自己定义cell上的手势操作，这个库不会做其他操作。**SCTableViewCellStyleRight**和**SCTableViewCellStyleLeft**就代表着只开放右侧或左侧滑动菜单，在邮箱中你也可以看到不管是左侧还是右侧你都能滑出一个自定义的菜单，如果你想要实现左右都能滑出菜单，则使用**SCTableViewCellStyleBoth**。
 
 > 目前只实现了`SCTableViewCellStyleRight`。(2015-09-21)
 
-样式需要在`- (SCTableViewCellStyle)SCTableView:(UITableView *)tableView editStyleForRowAtIndexPath:(NSIndexPath *)indexPath;`这个委托方法中为每一行来指定。`SCTableViewCell`会在每次layout的时候调用这个委托来获取当前行的样式。
+样式需要在
+`- (SCTableViewCellStyle)SCTableView:(UITableView *)tableView editStyleForRowAtIndexPath:(NSIndexPath *)indexPath;`这个委托方法中为每一行来指定。`SCTableViewCell`会在每次layout的时候调用这个委托来获取当前行的样式。
 
+### 定义菜单结构 Custom your menu buttons
 菜单的结构则是在`- (NSArray *)SCTableView:(UITableView *)tableView rightEditActionsForRowAtIndexPath:(NSIndexPath *)indexPath;`和`- (NSArray *)SCTableView:(UITableView *)tableView leftEditActionsForRowAtIndexPath:(NSIndexPath *)indexPath;`这两个委托方法中定义，现在是返回一个UIButton的数组即可，之后会做一个ActionButton的基类，名字叫做`SCTableViewCellRowActionButton`。具体定义方法可以参考demo。
 
+### 操作的回调 Action Callback
 获取菜单操作的委托方法是`- (void)SCTableView:(UITableView *)tableView commitActionIndex:(NSInteger)index forIndexPath:(NSIndexPath *)indexPath;`，滑动到底会触发`actions`中的最后一个`UIButton`的事件。记住你在定义菜单结构的时候，你数组中的button顺序就是在界面上呈现出来的顺序。
 
 ## 证书 License
