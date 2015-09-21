@@ -20,7 +20,16 @@ typedef NS_ENUM(NSInteger, SCTableViewCellStyle) {
 @class SCTableViewCell;
 @protocol SCTableViewCellDelegate <NSObject>
 
-@optional
+@required
+/**
+ *  获取每一行cell对应的编辑样式
+ *
+ *  @param tableView 父级tableview
+ *  @param indexPath 索引
+ *
+ *  @return
+ */
+- (SCTableViewCellStyle)SCTableView:(UITableView *)tableView editStyleForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 /**
  *  获取每一行cell对应的按钮集合的委托方法，在layoutsubview的时候调用
@@ -30,7 +39,8 @@ typedef NS_ENUM(NSInteger, SCTableViewCellStyle) {
  *
  *  @return SCTableViewCellRowActionButton的数组
  */
-- (NSArray *)SCTableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (NSArray *)SCTableView:(UITableView *)tableView rightEditActionsForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (NSArray *)SCTableView:(UITableView *)tableView leftEditActionsForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 /**
  *  每一行cell的动作触发回调

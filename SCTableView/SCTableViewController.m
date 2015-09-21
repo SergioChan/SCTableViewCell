@@ -67,6 +67,12 @@
     return cell;
 }
 
+#pragma mark - SCTableViewCell Delegate
+- (SCTableViewCellStyle)SCTableView:(UITableView *)tableView editStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return SCTableViewCellStyleRight;
+}
+
 - (void)SCTableView:(UITableView *)tableView commitActionIndex:(NSInteger)index forIndexPath:(NSIndexPath *)indexPath
 {
     if(index == 2)
@@ -74,6 +80,37 @@
         [self.data removeObjectAtIndex:indexPath.row];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
     }
+}
+
+- (NSArray *)SCTableView:(UITableView *)tableView leftEditActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @[];
+}
+
+- (NSArray *)SCTableView:(UITableView *)tableView rightEditActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIButton *actionButton_1 = [[UIButton alloc]init];
+    actionButton_1.backgroundColor = [UIColor lightGrayColor];
+    actionButton_1.tag = 0;
+    [actionButton_1 setTitle:@"更多" forState:UIControlStateNormal];
+    actionButton_1.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    actionButton_1.contentEdgeInsets = UIEdgeInsetsMake(0,15,0,0);
+    
+    UIButton *actionButton_2 = [[UIButton alloc]init];
+    actionButton_2.backgroundColor = [UIColor orangeColor];
+    actionButton_2.tag = 1;
+    [actionButton_2 setTitle:@"旗标" forState:UIControlStateNormal];
+    actionButton_2.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    actionButton_2.contentEdgeInsets = UIEdgeInsetsMake(0,15,0,0);
+    
+    UIButton *actionButton_3 = [[UIButton alloc]init];
+    actionButton_3.backgroundColor = [UIColor redColor];
+    actionButton_3.tag = 2;
+    [actionButton_3 setTitle:@"删除" forState:UIControlStateNormal];
+    actionButton_3.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    actionButton_3.contentEdgeInsets = UIEdgeInsetsMake(0,15,0,0);
+    
+    return @[actionButton_1,actionButton_2,actionButton_3];
 }
 
 // Override to support conditional editing of the table view.

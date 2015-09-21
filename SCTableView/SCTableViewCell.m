@@ -23,11 +23,6 @@
 @property (nonatomic) CGFloat touchBeganPointX;
 @property (nonatomic) CGFloat buttonWidth;
 
-// temporarily using
-@property (nonatomic, strong) UIButton *actionButton_1;
-@property (nonatomic, strong) UIButton *actionButton_2;
-@property (nonatomic, strong) UIButton *actionButton_3;
-
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSIndexPath *indexPath;
 @end
@@ -44,7 +39,6 @@
     if(self)
     {
         self.style = sc_style;
-        self.backgroundColor = [UIColor clearColor];
         self.contentView.backgroundColor = [UIColor whiteColor];
         self.touchBeganPointX = 0.0f;
         self.dragAnimationDuration = 0.2f;
@@ -54,34 +48,6 @@
         _isMoving = NO;
         _hasMoved = NO;
         assert([self.tableView isKindOfClass:[UITableView class]]);
-        
-        self.actionButton_1 = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height)];
-        _actionButton_1.backgroundColor = [UIColor lightGrayColor];
-        _actionButton_1.tag = 0;
-        [_actionButton_1 addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [_actionButton_1 setTitle:@"更多" forState:UIControlStateNormal];
-        _actionButton_1.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        _actionButton_1.contentEdgeInsets = UIEdgeInsetsMake(0,15,0,0);
-        
-        self.actionButton_2 = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height)];
-        _actionButton_2.backgroundColor = [UIColor orangeColor];
-        _actionButton_2.tag = 1;
-        [_actionButton_2 addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [_actionButton_2 setTitle:@"旗标" forState:UIControlStateNormal];
-        _actionButton_2.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        _actionButton_2.contentEdgeInsets = UIEdgeInsetsMake(0,15,0,0);
-        
-        self.actionButton_3 = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height)];
-        _actionButton_3.backgroundColor = [UIColor redColor];
-        _actionButton_3.tag = 2;
-        [_actionButton_3 addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [_actionButton_3 setTitle:@"删除" forState:UIControlStateNormal];
-        _actionButton_3.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        _actionButton_3.contentEdgeInsets = UIEdgeInsetsMake(0,15,0,0);
-        
-        [self addSubview:_actionButton_1];
-        [self addSubview:_actionButton_2];
-        [self addSubview:_actionButton_3];
     }
     return self;
 }
@@ -91,11 +57,11 @@
     [super setSelected:selected animated:animated];
 }
 
-- (void)buttonPressed:(id)sender
+- (void)rightButtonPressed:(id)sender
 {
     UIButton *btn = (UIButton *)sender;
     NSInteger index = btn.tag;
-    NSLog(@"pressed at index : %ld",index);
+    [self actionTrigger:YES index:index];
 }
 
 /**
@@ -125,10 +91,8 @@
         return;
     }
     [super layoutSubviews];
-    //self.contentView.frame = CGRectMake(0.0f, 0.0f, self.contentView.width, self.contentView.height);
-    _actionButton_1.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
-    _actionButton_2.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
-    _actionButton_3.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
+    [self getSCStyle];
+    [self getActionsArray];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -191,9 +155,17 @@
                                 CGFloat t_delta = (delta - (ScreenWidth / 2.0f))/ 3.0f;
                                 [UIView animateWithDuration:self.dragAnimationDuration animations:^{
                                     self.contentView.frame = CGRectMake(-delta, self.contentView.top, self.contentView.width, self.contentView.height);
-                                    self.actionButton_1.frame = CGRectMake(ScreenWidth - delta, _actionButton_1.top, self.buttonWidth + t_delta, _actionButton_1.height);
-                                    self.actionButton_2.frame = CGRectMake(ScreenWidth - delta * 2.0f/3.0f , _actionButton_2.top, self.buttonWidth + t_delta, _actionButton_2.height);
-                                    self.actionButton_3.frame = CGRectMake(ScreenWidth - delta, _actionButton_3.top,(self.buttonWidth + t_delta ) * 3.0f, _actionButton_3.height);
+                                    
+                                    CGFloat p_delta = delta;
+                                    for(NSInteger i=0;i<self.rightActionButtons.count-1;i++)
+                                    {
+                                        UIButton *button = [self.rightActionButtons objectAtIndex:i];
+                                        button.frame = CGRectMake(self.width - p_delta, 0.0f, self.buttonWidth + t_delta, self.height);
+                                        p_delta -= delta / self.rightActionButtons.count;
+                                    }
+                                    
+                                    UIButton *lastOne = [self.rightActionButtons lastObject];
+                                    lastOne.frame = CGRectMake(self.width - delta, 0.0f, (self.buttonWidth + t_delta ) * 3.0f , self.height);
                                 }];
                             }
                             else
@@ -201,9 +173,17 @@
                                 // 位移量超过0像素才移动，这是保证只有右边的区域会出现
                                 [UIView animateWithDuration:self.dragAnimationDuration animations:^{
                                     self.contentView.frame = CGRectMake(-delta, self.contentView.top, self.contentView.width, self.contentView.height);
-                                    self.actionButton_1.frame = CGRectMake(ScreenWidth - delta, _actionButton_1.top, self.buttonWidth , _actionButton_1.height);
-                                    self.actionButton_2.frame = CGRectMake(ScreenWidth - delta * 2.0f/3.0f, _actionButton_2.top, self.buttonWidth , _actionButton_2.height);
-                                    self.actionButton_3.frame = CGRectMake(ScreenWidth - delta, _actionButton_3.top,self.buttonWidth * 3.0f, _actionButton_3.height);
+                                    
+                                    CGFloat t_delta = delta;
+                                    for(NSInteger i=0;i<self.rightActionButtons.count-1;i++)
+                                    {
+                                        UIButton *button = [self.rightActionButtons objectAtIndex:i];
+                                        button.frame = CGRectMake(self.width - t_delta, 0.0f, self.buttonWidth, self.height);
+                                        t_delta -= delta / self.rightActionButtons.count;
+                                    }
+                                    
+                                    UIButton *lastOne = [self.rightActionButtons lastObject];
+                                    lastOne.frame = CGRectMake(self.width - delta, 0.0f,self.buttonWidth * 3.0f, self.height);
                                 }];
                             }
                         }
@@ -212,9 +192,13 @@
                             CGFloat t_delta = (delta - (ScreenWidth / 2.0f))/ 3.0f;
                             [UIView animateWithDuration:self.dragAnimationDuration animations:^{
                                 self.contentView.frame = CGRectMake(-delta, self.contentView.top, self.contentView.width, self.contentView.height);
-                                self.actionButton_1.frame = CGRectMake(ScreenWidth - delta, _actionButton_1.top, self.buttonWidth + t_delta, _actionButton_1.height);
-                                self.actionButton_2.frame = CGRectMake(ScreenWidth - delta * 2.0f/3.0f , _actionButton_2.top, self.buttonWidth + t_delta, _actionButton_2.height);
-                                self.actionButton_3.frame = CGRectMake(ScreenWidth - delta / 3.0f, _actionButton_3.top, self.buttonWidth +t_delta, _actionButton_3.height);
+                                
+                                CGFloat p_delta = delta;
+                                for(UIButton *button in self.rightActionButtons)
+                                {
+                                    button.frame = CGRectMake(self.width - p_delta, 0.0f, self.buttonWidth + t_delta, self.height);
+                                    p_delta -= delta / self.rightActionButtons.count;
+                                }
                             }];
                         }
                     }
@@ -222,10 +206,14 @@
                     {
                         // 位移量超过0像素才移动，这是保证只有右边的区域会出现
                         [UIView animateWithDuration:self.dragAnimationDuration animations:^{
-                            self.contentView.frame = CGRectMake(-delta, self.contentView.top, self.contentView.width, self.contentView.height);
-                            self.actionButton_1.frame = CGRectMake(ScreenWidth - delta, _actionButton_1.top, self.buttonWidth , _actionButton_1.height);
-                            self.actionButton_2.frame = CGRectMake(ScreenWidth - delta * 2.0f/3.0f, _actionButton_2.top, self.buttonWidth , _actionButton_2.height);
-                            self.actionButton_3.frame = CGRectMake(ScreenWidth - delta / 3.0f, _actionButton_3.top, self.buttonWidth , _actionButton_3.height);
+                            self.contentView.frame = CGRectMake(- delta, self.contentView.top, self.contentView.width, self.contentView.height);
+                            
+                            CGFloat t_delta = delta;
+                            for(UIButton *button in self.rightActionButtons)
+                            {
+                                button.frame = CGRectMake(self.width - t_delta, 0.0f, self.buttonWidth, self.height);
+                                t_delta -= delta / self.rightActionButtons.count;
+                            }
                         }];
                     }
                 }
@@ -263,7 +251,7 @@
                 NSLog(@"end ! --(%f)-- %f",CurrentXIndex, PreviousXIndex - CurrentXIndex);
                 
                 // 判断特殊的删除情况
-                if(self.actionButton_3.width > self.buttonWidth * 3.0f)
+                if([(UIButton *)self.rightActionButtons.lastObject width] > self.buttonWidth * 3.0f)
                 {
                     [self actionTrigger:YES index:2];
                     return;
@@ -347,9 +335,10 @@
 {
     [UIView animateWithDuration:self.resetAnimationDuration animations:^{
         self.contentView.frame = CGRectMake(0.0f, self.contentView.top, self.contentView.width, self.contentView.height);
-        self.actionButton_1.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
-        self.actionButton_2.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
-        self.actionButton_3.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
+        for(UIButton *button in self.rightActionButtons)
+        {
+            button.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
+        }
     } completion:^(BOOL finished) {
         _isMoving = NO;
         _hasMoved = NO;
@@ -360,12 +349,72 @@
 {
     [UIView animateWithDuration:self.resetAnimationDuration animations:^{
         self.contentView.frame = CGRectMake(- ScreenWidth/2.0f, self.contentView.top, self.contentView.width, self.contentView.height);
-        self.actionButton_1.frame = CGRectMake(ScreenWidth / 2.0f, _actionButton_1.top, self.buttonWidth, _actionButton_1.height);
-        self.actionButton_2.frame = CGRectMake(ScreenWidth * 2.0f / 3.0f, _actionButton_2.top, self.buttonWidth, _actionButton_2.height);
-        self.actionButton_3.frame = CGRectMake(ScreenWidth * 5.0f / 6.0f, _actionButton_3.top, self.buttonWidth, _actionButton_2.height);
+        CGFloat t_start = ScreenWidth / 2.0f;
+        for(UIButton *button in self.rightActionButtons)
+        {
+            button.frame = CGRectMake(t_start, 0.0f, self.buttonWidth, self.height);
+            t_start += self.buttonWidth;
+        }
     } completion:^(BOOL finished) {
         _isMoving = NO;
         _hasMoved = NO;
     }];
+}
+
+- (void)getActionsArray
+{
+    self.indexPath = [self.tableView indexPathForCell:self];
+    switch (self.style) {
+        case SCTableViewCellStyleRight:
+        {
+            if([self.delegate respondsToSelector:@selector(SCTableView:rightEditActionsForRowAtIndexPath:)])
+            {
+                NSLog(@"get Actions!");
+                self.rightActionButtons = [[self.delegate SCTableView:self.tableView rightEditActionsForRowAtIndexPath:self.indexPath] mutableCopy];
+                self.buttonWidth = (self.width / 2.0f)/ self.rightActionButtons.count;
+                
+                for(UIButton *button in self.rightActionButtons)
+                {
+                    button.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
+                    button.tag = [self.rightActionButtons indexOfObject:button];
+                    [button addTarget:self action:@selector(rightButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+                    [self addSubview:button];
+                }
+            }
+        }
+            break;
+        case SCTableViewCellStyleLeft:
+        {
+            if([self.delegate respondsToSelector:@selector(SCTableView:leftEditActionsForRowAtIndexPath:)])
+            {
+                self.leftActionButtons = [[self.delegate SCTableView:self.tableView leftEditActionsForRowAtIndexPath:self.indexPath] mutableCopy];
+            }
+        }
+            break;
+        case SCTableViewCellStyleBoth:
+        {
+            if([self.delegate respondsToSelector:@selector(SCTableView:rightEditActionsForRowAtIndexPath:)])
+            {
+                self.rightActionButtons = [[self.delegate SCTableView:self.tableView rightEditActionsForRowAtIndexPath:self.indexPath] mutableCopy];
+            }
+            if([self.delegate respondsToSelector:@selector(SCTableView:leftEditActionsForRowAtIndexPath:)])
+            {
+                self.leftActionButtons = [[self.delegate SCTableView:self.tableView leftEditActionsForRowAtIndexPath:self.indexPath] mutableCopy];
+            }
+        }
+            break;
+        case SCTableViewCellStyleDefault:
+        default:
+            break;
+    }
+}
+
+- (void)getSCStyle
+{
+    self.indexPath = [self.tableView indexPathForCell:self];
+    if([self.delegate respondsToSelector:@selector(SCTableView:editStyleForRowAtIndexPath:)])
+    {
+        self.style = [self.delegate SCTableView:self.tableView editStyleForRowAtIndexPath:self.indexPath];
+    }
 }
 @end
