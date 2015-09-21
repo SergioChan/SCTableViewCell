@@ -16,6 +16,7 @@
 		22CEED541BA5B5420085EF20 /* SCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CEED531BA5B5420085EF20 /* SCTableViewController.m */; };
 		22CEED571BA5B9A40085EF20 /* SCTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CEED561BA5B9A40085EF20 /* SCTableViewCell.m */; };
 		22CEED5A1BA5C4EA0085EF20 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CEED591BA5C4EA0085EF20 /* UIViewExt.m */; };
+		22DC296F1BAF8AD9003D28CC /* SCTableViewCellRowActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DC296E1BAF8AD9003D28CC /* SCTableViewCellRowActionButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,8 @@
 		22CEED561BA5B9A40085EF20 /* SCTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTableViewCell.m; sourceTree = "<group>"; };
 		22CEED581BA5C4EA0085EF20 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		22CEED591BA5C4EA0085EF20 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
+		22DC296D1BAF8AD9003D28CC /* SCTableViewCellRowActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTableViewCellRowActionButton.h; sourceTree = "<group>"; };
+		22DC296E1BAF8AD9003D28CC /* SCTableViewCellRowActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTableViewCellRowActionButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,8 @@
 			children = (
 				22CEED551BA5B9A40085EF20 /* SCTableViewCell.h */,
 				22CEED561BA5B9A40085EF20 /* SCTableViewCell.m */,
+				22DC296D1BAF8AD9003D28CC /* SCTableViewCellRowActionButton.h */,
+				22DC296E1BAF8AD9003D28CC /* SCTableViewCellRowActionButton.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 			files = (
 				22CEED321BA5B3930085EF20 /* AppDelegate.m in Sources */,
 				22CEED571BA5B9A40085EF20 /* SCTableViewCell.m in Sources */,
+				22DC296F1BAF8AD9003D28CC /* SCTableViewCellRowActionButton.m in Sources */,
 				22CEED5A1BA5C4EA0085EF20 /* UIViewExt.m in Sources */,
 				22CEED541BA5B5420085EF20 /* SCTableViewController.m in Sources */,
 				22CEED2F1BA5B3930085EF20 /* main.m in Sources */,

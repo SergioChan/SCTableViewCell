@@ -17,6 +17,32 @@ typedef NS_ENUM(NSInteger, SCTableViewCellStyle) {
     SCTableViewCellStyleBoth    // table view cell with both side button menu
 };
 
+@class SCTableViewCell;
+@protocol SCTableViewCellDelegate <NSObject>
+
+@optional
+
+/**
+ *  获取每一行cell对应的按钮集合的委托方法，在layoutsubview的时候调用
+ *
+ *  @param tableView 父级tableview
+ *  @param indexPath 索引
+ *
+ *  @return SCTableViewCellRowActionButton的数组
+ */
+- (NSArray *)SCTableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath;
+
+/**
+ *  每一行cell的动作触发回调
+ *
+ *  @param tableView 父级tableview
+ *  @param index     动作index
+ *  @param indexPath 索引
+ */
+- (void)SCTableView:(UITableView *)tableView commitActionIndex:(NSInteger)index forIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
 @interface SCTableViewCell : UITableViewCell
 
 /**
@@ -31,7 +57,7 @@ typedef NS_ENUM(NSInteger, SCTableViewCellStyle) {
  */
 @property (nonatomic) CGFloat resetAnimationDuration;
 
-@property (nonatomic, copy) void (^deleteRowHandler)(void);
+@property (nonatomic, weak) id<SCTableViewCellDelegate> delegate;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier inTableView:(UITableView *)tableView withSCStyle:(SCTableViewCellStyle)sc_style;
 @end

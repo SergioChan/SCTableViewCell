@@ -29,6 +29,7 @@
 @property (nonatomic, strong) UIButton *actionButton_3;
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSIndexPath *indexPath;
 @end
 
 @implementation SCTableViewCell
@@ -95,6 +96,26 @@
     UIButton *btn = (UIButton *)sender;
     NSInteger index = btn.tag;
     NSLog(@"pressed at index : %ld",index);
+}
+
+/**
+ *  触发事件的最终汇总出口
+ *
+ *  @param isRight 是否是右边滑动菜单
+ *  @param index   索引
+ */
+- (void)actionTrigger:(BOOL)isRight index:(NSInteger)index
+{
+    self.indexPath = [self.tableView indexPathForCell:self];
+    
+    if(isRight)
+    {
+        // 判断index是否是最后一个
+        if([self.delegate respondsToSelector:@selector(SCTableView:commitActionIndex:forIndexPath:)])
+        {
+            [self.delegate SCTableView:self.tableView commitActionIndex:index forIndexPath:self.indexPath];
+        }
+    }
 }
 
 - (void)layoutSubviews
@@ -244,10 +265,7 @@
                 // 判断特殊的删除情况
                 if(self.actionButton_3.width > self.buttonWidth * 3.0f)
                 {
-                    if(self.deleteRowHandler)
-                    {
-                        self.deleteRowHandler();
-                    }
+                    [self actionTrigger:YES index:2];
                     return;
                 }
                 

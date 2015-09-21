@@ -9,7 +9,7 @@
 #import "SCTableViewController.h"
 #import "SCTableViewCell.h"
 
-@interface SCTableViewController ()
+@interface SCTableViewController () <SCTableViewCellDelegate>
 @property (nonatomic, strong) NSMutableArray *data;
 @end
 
@@ -60,15 +60,20 @@
     {
         cell = [[SCTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reuseIdentifier" inTableView:self.tableView withSCStyle:SCTableViewCellStyleRight];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.delegate = self;
         NSString *item = [self.data objectAtIndex:indexPath.row];
         cell.textLabel.text = item;
-        cell.deleteRowHandler = ^{
-            NSInteger index = [self.data indexOfObject:item];
-            [self.data removeObject:item];
-            [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
-        };
     }
     return cell;
+}
+
+- (void)SCTableView:(UITableView *)tableView commitActionIndex:(NSInteger)index forIndexPath:(NSIndexPath *)indexPath
+{
+    if(index == 2)
+    {
+        [self.data removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+    }
 }
 
 // Override to support conditional editing of the table view.
