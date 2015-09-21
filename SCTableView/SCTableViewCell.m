@@ -152,7 +152,7 @@
                             // 最后一个button需要变宽度了
                             if(delta > ScreenWidth / 2.0f)
                             {
-                                CGFloat t_delta = (delta - (ScreenWidth / 2.0f))/ 3.0f;
+                                CGFloat t_delta = (delta - (ScreenWidth / 2.0f))/ self.rightActionButtons.count;
                                 [UIView animateWithDuration:self.dragAnimationDuration animations:^{
                                     self.contentView.frame = CGRectMake(-delta, self.contentView.top, self.contentView.width, self.contentView.height);
                                     
@@ -165,7 +165,7 @@
                                     }
                                     
                                     UIButton *lastOne = [self.rightActionButtons lastObject];
-                                    lastOne.frame = CGRectMake(self.width - delta, 0.0f, (self.buttonWidth + t_delta ) * 3.0f , self.height);
+                                    lastOne.frame = CGRectMake(self.width - delta, 0.0f, (self.buttonWidth + t_delta ) * self.rightActionButtons.count , self.height);
                                 }];
                             }
                             else
@@ -183,13 +183,13 @@
                                     }
                                     
                                     UIButton *lastOne = [self.rightActionButtons lastObject];
-                                    lastOne.frame = CGRectMake(self.width - delta, 0.0f,self.buttonWidth * 3.0f, self.height);
+                                    lastOne.frame = CGRectMake(self.width - delta, 0.0f,self.buttonWidth * self.rightActionButtons.count, self.height);
                                 }];
                             }
                         }
                         else
                         {
-                            CGFloat t_delta = (delta - (ScreenWidth / 2.0f))/ 3.0f;
+                            CGFloat t_delta = (delta - (ScreenWidth / 2.0f))/ self.rightActionButtons.count;
                             [UIView animateWithDuration:self.dragAnimationDuration animations:^{
                                 self.contentView.frame = CGRectMake(-delta, self.contentView.top, self.contentView.width, self.contentView.height);
                                 
@@ -251,7 +251,7 @@
                 NSLog(@"end ! --(%f)-- %f",CurrentXIndex, PreviousXIndex - CurrentXIndex);
                 
                 // 判断特殊的删除情况
-                if([(UIButton *)self.rightActionButtons.lastObject width] > self.buttonWidth * 3.0f)
+                if([(UIButton *)self.rightActionButtons.lastObject width] > self.buttonWidth * self.rightActionButtons.count)
                 {
                     [self actionTrigger:YES index:2];
                     return;
