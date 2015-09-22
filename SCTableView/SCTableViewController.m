@@ -61,9 +61,9 @@
         cell = [[SCTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reuseIdentifier" inTableView:self.tableView withSCStyle:SCTableViewCellStyleRight];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.delegate = self;
-        NSString *item = [self.data objectAtIndex:indexPath.row];
-        cell.textLabel.text = item;
     }
+    NSString *item = [self.data objectAtIndex:indexPath.row];
+    cell.textLabel.text = item;
     return cell;
 }
 
