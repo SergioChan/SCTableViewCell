@@ -9,6 +9,7 @@
 #import "SCTableViewCell.h"
 
 #define INDEX_X_FOR_DELETING 50.0f
+#define SCNotificationExitEditing @"SCNotificationExitEditing"
 
 @interface SCTableViewCell()
 {
@@ -44,11 +45,12 @@
         self.dragAnimationDuration = 0.2f;
         self.resetAnimationDuration = 0.4f;
         self.buttonWidth = ScreenWidth / 6.0f;
-        self.dragAcceleration = 1.2f;
+        self.dragAcceleration = 1.14f;
         self.isEditing = NO;
         self.tableView = tableView;
         _isMoving = NO;
         _hasMoved = NO;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ExitEditing:) name:SCNotificationExitEditing object:nil];
         assert([self.tableView isKindOfClass:[UITableView class]]);
     }
     return self;
@@ -59,11 +61,32 @@
     [super setSelected:selected animated:animated];
 }
 
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)rightButtonPressed:(id)sender
 {
     UIButton *btn = (UIButton *)sender;
     NSInteger index = btn.tag;
     [self actionTrigger:YES index:index];
+}
+
+/**
+ *  接收到别的cell的通知来取消自己的编辑状态
+ *
+ *  @param sender NSNotification
+ */
+- (void)ExitEditing:(id)sender
+{
+    if([(NSNotification *)sender object] != self)
+    {
+        if(self.isEditing)
+        {
+            [self resetButtonsToOriginPosition];
+        }
+    }
 }
 
 /**
@@ -113,6 +136,9 @@
                 if(self.contentView.left == 0.0f)
                 {
                     self.touchBeganPointX = [touch locationInView:self.tableView].x;
+                    
+                    //当开始编辑的时候，向其他cell发送取消编辑的通知
+                    [[NSNotificationCenter defaultCenter] postNotificationName:SCNotificationExitEditing object:self userInfo:nil];
                 }
                 _isMoving = YES;
             }
@@ -143,8 +169,8 @@
                 _hasMoved = YES;
                 _isEditing = YES;
                 CGFloat CurrentXIndex = [touch locationInView:self.tableView].x;
-                CGFloat PreviousXIndex = [touch previousLocationInView:self.tableView].x;
-                NSLog(@"--- (%f,%f) --- %f",PreviousXIndex,CurrentXIndex,self.touchBeganPointX - CurrentXIndex);
+                CGFloat CurrentYIndex = [touch locationInView:self.tableView].y;
+                NSLog(@"--- (%f,%f) --- %f",CurrentXIndex,CurrentYIndex,self.touchBeganPointX - CurrentXIndex);
                 CGFloat delta = (self.touchBeganPointX - CurrentXIndex) * self.dragAcceleration;
                 if(delta > 0)
                 {
@@ -157,7 +183,7 @@
                             {
                                 CGFloat t_delta = (delta - (ScreenWidth / 2.0f))/ self.rightActionButtons.count;
                                 [UIView animateWithDuration:self.dragAnimationDuration animations:^{
-                                    self.contentView.frame = CGRectMake(-delta, self.contentView.top, self.contentView.width, self.contentView.height);
+                                    self.contentView.frame = CGRectMake(CurrentXIndex-self.width, self.contentView.top, self.contentView.width, self.contentView.height);
                                     
                                     CGFloat p_delta = delta;
                                     for(NSInteger i=0;i<self.rightActionButtons.count-1;i++)
@@ -167,15 +193,20 @@
                                         p_delta -= delta / self.rightActionButtons.count;
                                     }
                                     
+                                    CGFloat t_x = CurrentXIndex;
+                                    if([(UIButton *)[self.rightActionButtons objectAtIndex:0] left] < CurrentXIndex)
+                                    {
+                                        t_x = [(UIButton *)[self.rightActionButtons objectAtIndex:0] left];
+                                    }
                                     UIButton *lastOne = [self.rightActionButtons lastObject];
-                                    lastOne.frame = CGRectMake(self.width - delta, 0.0f, (self.buttonWidth + t_delta ) * self.rightActionButtons.count , self.height);
+                                    lastOne.frame = CGRectMake(t_x, 0.0f, self.width - t_x, self.height);
                                 }];
                             }
                             else
                             {
                                 // 位移量超过0像素才移动，这是保证只有右边的区域会出现
                                 [UIView animateWithDuration:self.dragAnimationDuration animations:^{
-                                    self.contentView.frame = CGRectMake(-delta, self.contentView.top, self.contentView.width, self.contentView.height);
+                                    self.contentView.frame = CGRectMake(CurrentXIndex-self.width, self.contentView.top, self.contentView.width, self.contentView.height);
                                     
                                     CGFloat t_delta = delta;
                                     for(NSInteger i=0;i<self.rightActionButtons.count-1;i++)
@@ -184,9 +215,13 @@
                                         button.frame = CGRectMake(self.width - t_delta, 0.0f, self.buttonWidth, self.height);
                                         t_delta -= delta / self.rightActionButtons.count;
                                     }
-                                    
+                                    CGFloat t_x = CurrentXIndex;
+                                    if([(UIButton *)[self.rightActionButtons objectAtIndex:0] left] < CurrentXIndex)
+                                    {
+                                        t_x = [(UIButton *)[self.rightActionButtons objectAtIndex:0] left];
+                                    }
                                     UIButton *lastOne = [self.rightActionButtons lastObject];
-                                    lastOne.frame = CGRectMake(self.width - delta, 0.0f,self.buttonWidth * self.rightActionButtons.count, self.height);
+                                    lastOne.frame = CGRectMake(t_x, 0.0f,self.width - t_x, self.height);
                                 }];
                             }
                         }
