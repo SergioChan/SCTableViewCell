@@ -9,6 +9,8 @@ This is a custom table view cell from iOS Native Mail App, including the special
 
 ![图片高能](https://raw.githubusercontent.com/SergioChan/SCTableViewCell/master/intro1.gif)
 
+![图片高能](https://raw.githubusercontent.com/SergioChan/SCTableViewCell/master/introv0.2.gif)
+
 ## 版本 Version
 
 目前还在原型版本 
