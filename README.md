@@ -13,7 +13,7 @@ This is a custom table view cell from iOS Native Mail App, including the special
 
 ## 版本 Version
 
-目前还在原型版本 
+目前还在原型版本，欢迎大家提pr和我一起做好它
 
 Still prototype
 
