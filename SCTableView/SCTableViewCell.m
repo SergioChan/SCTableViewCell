@@ -44,7 +44,7 @@
         self.dragAnimationDuration = 0.2f;
         self.resetAnimationDuration = 0.4f;
         self.buttonWidth = ScreenWidth / 6.0f;
-        self.dragAcceleration = 1.1f;
+        self.dragAcceleration = 1.2f;
         self.isEditing = NO;
         self.tableView = tableView;
         _isMoving = NO;

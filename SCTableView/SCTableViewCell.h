@@ -68,8 +68,8 @@ typedef NS_ENUM(NSInteger, SCTableViewCellStyle) {
 @property (nonatomic) CGFloat resetAnimationDuration;
 
 /**
- *  滑动的时候的加速度，这个可以放大你手指位移的距离，默认值是1.1，就可以和系统实现的效果差不多了
- *  Acceleration when dragging, set higher to make movement wider, default is 1.1, which is similar to the effect of system implementation
+ *  滑动的时候的加速度，这个可以放大你手指位移的距离，默认值是1.2，就可以和系统实现的效果差不多了
+ *  Acceleration when dragging, set higher to make movement wider, default is 1.2, which is similar to the effect of system implementation
  */
 @property (nonatomic) CGFloat dragAcceleration;
 
