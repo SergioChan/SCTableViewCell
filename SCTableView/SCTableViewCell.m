@@ -82,7 +82,7 @@
 {
     if([(NSNotification *)sender object] != self)
     {
-        if(self.isEditing)
+        if(self.isEditing && !_isMoving)
         {
             [self resetButtonsToOriginPosition];
         }
