@@ -124,6 +124,10 @@
     return @"";
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"did select at %@",indexPath);
+}
 /**
  *  这是系统的实现方式，无法做到邮箱的效果，但可以做到微信和QQ的左滑效果，iOS8以上才有
  *

@@ -67,6 +67,18 @@ typedef NS_ENUM(NSInteger, SCTableViewCellStyle) {
  */
 @property (nonatomic) CGFloat resetAnimationDuration;
 
+/**
+ *  滑动的时候的加速度，这个可以放大你手指位移的距离，默认值是1.1，就可以和系统实现的效果差不多了
+ *  Acceleration when dragging, set higher to make movement wider, default is 1.1, which is similar to the effect of system implementation
+ */
+@property (nonatomic) CGFloat dragAcceleration;
+
+/**
+ *  是否正在编辑状态
+ *  Bool variable indicated the state whether you are editing your cell or not
+ */
+@property (nonatomic) BOOL isEditing;
+
 @property (nonatomic, weak) id<SCTableViewCellDelegate> delegate;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier inTableView:(UITableView *)tableView withSCStyle:(SCTableViewCellStyle)sc_style;

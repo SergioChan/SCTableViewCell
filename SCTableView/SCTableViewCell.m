@@ -44,6 +44,8 @@
         self.dragAnimationDuration = 0.2f;
         self.resetAnimationDuration = 0.4f;
         self.buttonWidth = ScreenWidth / 6.0f;
+        self.dragAcceleration = 1.1f;
+        self.isEditing = NO;
         self.tableView = tableView;
         _isMoving = NO;
         _hasMoved = NO;
@@ -139,10 +141,11 @@
             {
                 self.tableView.scrollEnabled = NO;
                 _hasMoved = YES;
+                _isEditing = YES;
                 CGFloat CurrentXIndex = [touch locationInView:self.tableView].x;
                 CGFloat PreviousXIndex = [touch previousLocationInView:self.tableView].x;
                 NSLog(@"--- (%f,%f) --- %f",PreviousXIndex,CurrentXIndex,self.touchBeganPointX - CurrentXIndex);
-                CGFloat delta = self.touchBeganPointX - CurrentXIndex;
+                CGFloat delta = (self.touchBeganPointX - CurrentXIndex) * self.dragAcceleration;
                 if(delta > 0)
                 {
                     if(delta > ScreenWidth / 2.0f)
@@ -259,6 +262,14 @@
                 
                 if(fabs(PreviousXIndex - CurrentXIndex) <= 3.0f)
                 {
+                    if(!_isEditing)
+                    {
+                        // 由于把整个手势的检测判断都覆盖了，这里需要把系统的didSelect也重新实现一下
+                        self.indexPath = [self.tableView indexPathForCell:self];
+                        [self.tableView.delegate tableView:self.tableView didSelectRowAtIndexPath:self.indexPath];
+                        return;
+                    }
+                    
                     // 并没有怎么移动
                     if(self.contentView.left < - ScreenWidth / 2.0f)
                     {
@@ -342,6 +353,7 @@
     } completion:^(BOOL finished) {
         _isMoving = NO;
         _hasMoved = NO;
+        _isEditing = NO;
     }];
 }
 
@@ -358,6 +370,7 @@
     } completion:^(BOOL finished) {
         _isMoving = NO;
         _hasMoved = NO;
+        _isEditing = YES;
     }];
 }
 
