@@ -87,5 +87,29 @@ typedef NS_ENUM(NSInteger, SCTableViewCellStyle) {
 ### 操作的回调 Action Callback
 获取菜单操作的委托方法是`- (void)SCTableView:(UITableView *)tableView commitActionIndex:(NSInteger)index forIndexPath:(NSIndexPath *)indexPath;`，滑动到底会触发`actions`中的最后一个`UIButton`的事件。记住你在定义菜单结构的时候，你数组中的button顺序就是在界面上呈现出来的顺序。
 
+### 参数的调控 Available Variables
+
+```Objective-C
+/**
+ *  滑动过程中的动画刷新间隔，减小这个值会加速滑动的动效，默认值是0.2s
+ *  Duration of dragging animation, set it lower to increase the speed of dragging, default is 0.2s
+ */
+@property (nonatomic) CGFloat dragAnimationDuration;
+
+/**
+ *  重置动画的时长，设置的更大能够获得更好的用户体验，默认值是0.4s
+ *  Duration of reset animation of buttons, set it higher to get better user experience, default is 0.4s
+ */
+@property (nonatomic) CGFloat resetAnimationDuration;
+
+/**
+ *  滑动的时候的加速度，这个可以放大你手指位移的距离，默认值是1.2，就可以和系统实现的效果差不多了
+ *  Acceleration when dragging, set higher to make movement wider, default is 1.2, which is similar to the effect of system implementation
+ */
+@property (nonatomic) CGFloat dragAcceleration;
+```
+
+`dragAnimationDuration`其实就是移动的时候动画执行的速率，值越小你所看到的动画就越快。`resetAnimationDuration`是你在拖拽超过了应有范围（现在是屏幕宽度的一半）之后松开手指会执行复原动画以及你没有拖拽到足够位置松开手指之后复原到消失的动画长度，值越大用户看到的效果越平滑，当然不能太大……否则就不够流畅了。至于最后的`dragAcceleration`，这是一个加速度，它可以放大你的移动，合适值在我简单调试后设置的是1.2，在这个值上，在速率，位移等方面都和邮箱的原生效果更相近。
+
 ## 证书 License
 MIT LICENSE
