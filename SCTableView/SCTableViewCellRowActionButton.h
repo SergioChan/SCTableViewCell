@@ -10,4 +10,5 @@
 
 @interface SCTableViewCellRowActionButton : UIButton
 
+- (id)initWithTitle:(NSString *)title color:(UIColor *)color;
 @end

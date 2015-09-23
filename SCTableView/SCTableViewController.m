@@ -8,6 +8,7 @@
 
 #import "SCTableViewController.h"
 #import "SCTableViewCell.h"
+#import "SCTableViewCellRowActionButton.h"
 
 @interface SCTableViewController () <SCTableViewCellDelegate>
 @property (nonatomic, strong) NSMutableArray *data;
@@ -58,7 +59,7 @@
     SCTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier"];
     if(!cell)
     {
-        cell = [[SCTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reuseIdentifier" inTableView:self.tableView withSCStyle:SCTableViewCellStyleRight];
+        cell = [[SCTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reuseIdentifier" inTableView:self.tableView];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.delegate = self;
     }
@@ -89,27 +90,9 @@
 
 - (NSArray *)SCTableView:(UITableView *)tableView rightEditActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIButton *actionButton_1 = [[UIButton alloc]init];
-    actionButton_1.backgroundColor = [UIColor lightGrayColor];
-    actionButton_1.tag = 0;
-    [actionButton_1 setTitle:@"更多" forState:UIControlStateNormal];
-    actionButton_1.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    actionButton_1.contentEdgeInsets = UIEdgeInsetsMake(0,15,0,0);
-    
-    UIButton *actionButton_2 = [[UIButton alloc]init];
-    actionButton_2.backgroundColor = [UIColor orangeColor];
-    actionButton_2.tag = 1;
-    [actionButton_2 setTitle:@"旗标" forState:UIControlStateNormal];
-    actionButton_2.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    actionButton_2.contentEdgeInsets = UIEdgeInsetsMake(0,15,0,0);
-    
-    UIButton *actionButton_3 = [[UIButton alloc]init];
-    actionButton_3.backgroundColor = [UIColor redColor];
-    actionButton_3.tag = 2;
-    [actionButton_3 setTitle:@"删除" forState:UIControlStateNormal];
-    actionButton_3.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    actionButton_3.contentEdgeInsets = UIEdgeInsetsMake(0,15,0,0);
-    
+    SCTableViewCellRowActionButton *actionButton_1 = [[SCTableViewCellRowActionButton alloc]initWithTitle:@"更多" color:[UIColor lightGrayColor]];
+    SCTableViewCellRowActionButton *actionButton_2 = [[SCTableViewCellRowActionButton alloc]initWithTitle:@"旗标" color:[UIColor orangeColor]];
+    SCTableViewCellRowActionButton *actionButton_3 = [[SCTableViewCellRowActionButton alloc]initWithTitle:@"删除" color:[UIColor redColor]];
     return @[actionButton_1,actionButton_2,actionButton_3];
 }
 
@@ -127,6 +110,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"did select at %@",indexPath);
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.tableView endEditing:YES];
+    [SCTableViewCell endEditing];
 }
 /**
  *  这是系统的实现方式，无法做到邮箱的效果，但可以做到微信和QQ的左滑效果，iOS8以上才有

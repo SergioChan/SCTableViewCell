@@ -30,16 +30,23 @@
 
 @implementation SCTableViewCell
 
+/**
+ *  滑动的时候取消所有cell的编辑状态
+ */
++ (void)endEditing
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:SCNotificationExitEditing object:nil userInfo:nil];
+}
+
 - (void)awakeFromNib {
     // Initialization code
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier inTableView:(UITableView *)tableView withSCStyle:(SCTableViewCellStyle)sc_style
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier inTableView:(UITableView *)tableView
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self)
     {
-        self.style = sc_style;
         self.contentView.backgroundColor = [UIColor whiteColor];
         self.touchBeganPointX = 0.0f;
         self.dragAnimationDuration = 0.2f;
@@ -250,6 +257,7 @@
             if(touch.tapCount > 1)
             {
                 //双击事件可以由其他recognizer捕获到
+                NSLog(@"double tap!");
                 [super touchesEnded:touches withEvent:event];
                 return;
             }

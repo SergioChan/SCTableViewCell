@@ -81,5 +81,7 @@ typedef NS_ENUM(NSInteger, SCTableViewCellStyle) {
 
 @property (nonatomic, weak) id<SCTableViewCellDelegate> delegate;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier inTableView:(UITableView *)tableView withSCStyle:(SCTableViewCellStyle)sc_style;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier inTableView:(UITableView *)tableView;
+
++ (void)endEditing;
 @end
