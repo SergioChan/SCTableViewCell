@@ -1,6 +1,25 @@
 # SCTableViewCell
 Swipe-to-Delete Effects like iOS Native Mail App
 
+## 作者 Author
+
+* [SergioChan](https://github.com/SergioChan)
+* [Yangsiy](https://github.com/yangsiy)
+
+## 版本 Version
+
+**Version 0.2**
+
+目前还在原型版本，欢迎大家提pr和我一起做好它
+
+> 这是一个开源项目，我们的时间都是有限的，因此很欢迎有相同兴趣的小伙伴能有愿意和我们一起完成这个轮子并且去创造更多的轮子~
+> 
+> Wish you guy could join me in the development of this project even in further projects~
+> 
+> Contact me at：cyh9211@icloud.com
+
+Still prototyping
+
 ## 效果 Visual Effects
 
 这是一个模仿iOS8中的邮箱里面的cell删除动效以及滑动右侧菜单按钮效果的开源库。
@@ -10,14 +29,6 @@ This is a custom table view cell from iOS Native Mail App, including the special
 ![图片高能](https://raw.githubusercontent.com/SergioChan/SCTableViewCell/master/intro1.gif)
 
 ![图片高能](https://raw.githubusercontent.com/SergioChan/SCTableViewCell/master/introv0.2.gif)
-
-## 版本 Version
-
-目前还在原型版本，欢迎大家提pr和我一起做好它
-
-Still prototype
-
-**V0.2**
 
 ## 说明 Introduction
 由于iOS 8 提供了`- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath` 这个API，因此例如微信和QQ的滑动菜单都是用系统自带的效果实现的，这个实现出来的效果和邮箱的有一些不一样，除了按钮在出现的动画上的区别，还有删除的交互和动效。我也比较欣赏苹果自己设计的这套交互，使用起来十分的爽，因此尝试着模仿实现了一下。
