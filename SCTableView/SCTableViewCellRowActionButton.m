@@ -10,7 +10,7 @@
 
 @implementation SCTableViewCellRowActionButton
 
-- (id)initWithTitle:(NSString *)title color:(UIColor *)color
+- (id)initWithTitle:(NSString *)title color:(UIColor *)color withActionBlock:(CommintActionBlock)block
 {
     self = [super init];
     if(self)
@@ -19,6 +19,7 @@
         [self setTitle:title forState:UIControlStateNormal];
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         self.contentEdgeInsets = UIEdgeInsetsMake(0,15,0,0);
+        self.actionCallBack = block;
     }
     return self;
 }

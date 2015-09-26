@@ -74,15 +74,6 @@
     return SCTableViewCellStyleRight;
 }
 
-- (void)SCTableView:(UITableView *)tableView commitActionIndex:(NSInteger)index forIndexPath:(NSIndexPath *)indexPath
-{
-    if(index == 2)
-    {
-        [self.data removeObjectAtIndex:indexPath.row];
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
-    }
-}
-
 - (NSArray *)SCTableView:(UITableView *)tableView leftEditActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return @[];
@@ -90,9 +81,16 @@
 
 - (NSArray *)SCTableView:(UITableView *)tableView rightEditActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SCTableViewCellRowActionButton *actionButton_1 = [[SCTableViewCellRowActionButton alloc]initWithTitle:@"更多" color:[UIColor lightGrayColor]];
-    SCTableViewCellRowActionButton *actionButton_2 = [[SCTableViewCellRowActionButton alloc]initWithTitle:@"旗标" color:[UIColor orangeColor]];
-    SCTableViewCellRowActionButton *actionButton_3 = [[SCTableViewCellRowActionButton alloc]initWithTitle:@"删除" color:[UIColor redColor]];
+    SCTableViewCellRowActionButton *actionButton_1 = [[SCTableViewCellRowActionButton alloc]initWithTitle:@"更多" color:[UIColor lightGrayColor] withActionBlock:^(NSIndexPath *t_indexPath){
+        NSLog(@"More!");
+    }];
+    SCTableViewCellRowActionButton *actionButton_2 = [[SCTableViewCellRowActionButton alloc]initWithTitle:@"旗标" color:[UIColor orangeColor] withActionBlock:^(NSIndexPath *t_indexPath){
+        NSLog(@"Flag!");
+    }];
+    SCTableViewCellRowActionButton *actionButton_3 = [[SCTableViewCellRowActionButton alloc]initWithTitle:@"删除" color:[UIColor redColor] withActionBlock:^(NSIndexPath *t_indexPath){
+        [self.data removeObjectAtIndex:t_indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:@[t_indexPath] withRowAnimation:UITableViewRowAnimationTop];
+    }];
     return @[actionButton_1,actionButton_2,actionButton_3];
 }
 

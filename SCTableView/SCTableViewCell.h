@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UIViewExt.h"
 #import <Foundation/Foundation.h>
+#import "SCTableViewCellRowActionButton.h"
 
 typedef NS_ENUM(NSInteger, SCTableViewCellStyle) {
     SCTableViewCellStyleDefault = 0,    // default table view cell style, just like UITableViewCell
@@ -41,15 +42,6 @@ typedef NS_ENUM(NSInteger, SCTableViewCellStyle) {
  */
 - (NSArray *)SCTableView:(UITableView *)tableView rightEditActionsForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (NSArray *)SCTableView:(UITableView *)tableView leftEditActionsForRowAtIndexPath:(NSIndexPath *)indexPath;
-
-/**
- *  每一行cell的动作触发回调
- *
- *  @param tableView 父级tableview
- *  @param index     动作index
- *  @param indexPath 索引
- */
-- (void)SCTableView:(UITableView *)tableView commitActionIndex:(NSInteger)index forIndexPath:(NSIndexPath *)indexPath;
 
 @end
 

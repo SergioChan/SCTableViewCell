@@ -103,34 +103,31 @@
 #pragma mark - Button Actions
 - (void)rightButtonPressed:(id)sender
 {
-    UIButton *btn = (UIButton *)sender;
-    NSInteger index = btn.tag;
-    [self actionTrigger:YES index:index];
+    SCTableViewCellRowActionButton *btn = (SCTableViewCellRowActionButton *)sender;
+    [self actionTrigger:YES button:btn];
 }
 
 - (void)leftButtonPressed:(id)sender
 {
-    UIButton *btn = (UIButton *)sender;
-    NSInteger index = btn.tag;
-    [self actionTrigger:NO index:index];
+    SCTableViewCellRowActionButton *btn = (SCTableViewCellRowActionButton *)sender;
+    [self actionTrigger:NO button:btn];
 }
 
 /**
  *  触发事件的最终汇总出口
  *
  *  @param isRight 是否是右边滑动菜单
- *  @param index   索引
  */
-- (void)actionTrigger:(BOOL)isRight index:(NSInteger)index
+- (void)actionTrigger:(BOOL)isRight button:(SCTableViewCellRowActionButton *)btn
 {
     self.indexPath = [self.tableView indexPathForCell:self];
     
     if(isRight)
     {
         // 判断index是否是最后一个
-        if([self.delegate respondsToSelector:@selector(SCTableView:commitActionIndex:forIndexPath:)])
+        if(btn.actionCallBack)
         {
-            [self.delegate SCTableView:self.tableView commitActionIndex:index forIndexPath:self.indexPath];
+            btn.actionCallBack(self.indexPath);
         }
     }
 }
@@ -600,7 +597,7 @@
     // 判断特殊的删除情况
     if([(UIButton *)self.rightActionButtons.lastObject width] > self.buttonWidth * self.rightActionButtons.count)
     {
-        [self actionTrigger:YES index:2];
+        [self actionTrigger:YES button:(SCTableViewCellRowActionButton *)self.rightActionButtons.lastObject];
         return;
     }
     

@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^CommintActionBlock)(NSIndexPath *path);
+
 @interface SCTableViewCellRowActionButton : UIButton
 
-- (id)initWithTitle:(NSString *)title color:(UIColor *)color;
+@property (nonatomic, copy) CommintActionBlock actionCallBack;
+
+- (id)initWithTitle:(NSString *)title color:(UIColor *)color withActionBlock:(CommintActionBlock)block;
 @end
