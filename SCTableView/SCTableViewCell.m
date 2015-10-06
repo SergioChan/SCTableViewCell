@@ -130,6 +130,13 @@
             btn.actionCallBack(self.indexPath);
         }
     }
+    else
+    {
+        if(btn.actionCallBack)
+        {
+            btn.actionCallBack(self.indexPath);
+        }
+    }
 }
 
 #pragma mark - Main Touch processer
@@ -160,7 +167,13 @@
                         break;
                     case SCTableViewCellStyleLeft:
                     {
-                        
+                        if(self.contentView.left == 0.0f)
+                        {
+                            self.touchBeganPointX = [touch locationInView:self.tableView].x;
+                            //当开始编辑的时候，向其他cell发送取消编辑的通知
+                            [[NSNotificationCenter defaultCenter] postNotificationName:SCNotificationExitEditing object:self userInfo:nil];
+                        }
+                        _isMoving = YES;
                     }
                         break;
                     case SCTableViewCellStyleBoth:
@@ -215,7 +228,13 @@
                         break;
                     case SCTableViewCellStyleLeft:
                     {
-                        
+                        _hasMoved = YES;
+                        _isEditing = YES;
+                        CGFloat CurrentXIndex = [touch locationInView:self.tableView].x;
+                        CGFloat CurrentYIndex = [touch locationInView:self.tableView].y;
+                        NSLog(@"--- (%f,%f) --- %f",CurrentXIndex,CurrentYIndex,self.touchBeganPointX - CurrentXIndex);
+                        CGFloat delta = (self.touchBeganPointX - CurrentXIndex) * self.dragAcceleration;
+                        [self leftMenuAnimation:delta andCurrentIndexX:CurrentXIndex];
                     }
                         break;
                     case SCTableViewCellStyleBoth:
@@ -271,7 +290,7 @@
                         break;
                     case SCTableViewCellStyleLeft:
                     {
-                        
+                        [self leftMenuAnimationEndpreviousIndex:PreviousXIndex currentIndex:CurrentXIndex];
                     }
                         break;
                     case SCTableViewCellStyleBoth:
@@ -331,7 +350,14 @@
                         break;
                     case SCTableViewCellStyleLeft:
                     {
-                        
+                        if(CurrentXIndex > ScreenWidth/3.0f)
+                        {
+                            [self resetButtonsToOriginPosition];
+                        }
+                        else
+                        {
+                            [self resetButtonsToDisplayPosition];
+                        }
                     }
                         break;
                     case SCTableViewCellStyleBoth:
@@ -381,7 +407,17 @@
             break;
         case SCTableViewCellStyleLeft:
         {
-            
+            [UIView animateWithDuration:self.resetAnimationDuration animations:^{
+                self.contentView.frame = CGRectMake(0.0f, self.contentView.top, self.contentView.width, self.contentView.height);
+                for(UIButton *button in self.leftActionButtons)
+                {
+                    button.frame = CGRectMake(-self.buttonWidth, 0.0f, self.buttonWidth, self.height);
+                }
+            } completion:^(BOOL finished) {
+                _isMoving = NO;
+                _hasMoved = NO;
+                _isEditing = NO;
+            }];
         }
             break;
         case SCTableViewCellStyleBoth:
@@ -420,7 +456,19 @@
             break;
         case SCTableViewCellStyleLeft:
         {
-            
+            [UIView animateWithDuration:self.resetAnimationDuration animations:^{
+                self.contentView.frame = CGRectMake(ScreenWidth/3.0f, self.contentView.top, self.contentView.width, self.contentView.height);
+                CGFloat t_start = self.buttonWidth * (self.leftActionButtons.count - 1);
+                for(UIButton *button in self.leftActionButtons)
+                {
+                    button.frame = CGRectMake(t_start, 0.0f, self.buttonWidth, self.height);
+                    t_start -= self.buttonWidth;
+                }
+            } completion:^(BOOL finished) {
+                _isMoving = NO;
+                _hasMoved = NO;
+                _isEditing = YES;
+            }];
         }
             break;
         case SCTableViewCellStyleBoth:
@@ -445,12 +493,15 @@
             {
                 NSLog(@"get Actions!");
                 self.rightActionButtons = [[self.delegate SCTableView:self.tableView rightEditActionsForRowAtIndexPath:self.indexPath] mutableCopy];
+                
+                // 右侧由于滑动空间小，个数不要超过三个
+                assert(self.rightActionButtons.count < 4);
+                
                 self.buttonWidth = (self.width / 2.0f)/ self.rightActionButtons.count;
                 
                 for(UIButton *button in self.rightActionButtons)
                 {
                     button.frame = CGRectMake(ScreenWidth, 0.0f, self.buttonWidth, self.height);
-                    button.tag = [self.rightActionButtons indexOfObject:button];
                     [button addTarget:self action:@selector(rightButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
                     [self addSubview:button];
                 }
@@ -462,6 +513,20 @@
             if([self.delegate respondsToSelector:@selector(SCTableView:leftEditActionsForRowAtIndexPath:)])
             {
                 self.leftActionButtons = [[self.delegate SCTableView:self.tableView leftEditActionsForRowAtIndexPath:self.indexPath] mutableCopy];
+                
+                // 左侧由于滑动空间小，个数不要超过一个
+                assert(self.leftActionButtons.count < 2);
+                
+                self.buttonWidth = (self.width / 3.0f)/ self.leftActionButtons.count;
+                
+                for(UIButton *button in self.leftActionButtons)
+                {
+                    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+                    button.contentEdgeInsets = UIEdgeInsetsMake(0,0,0,10);
+                    button.frame = CGRectMake(- self.buttonWidth, 0.0f, self.buttonWidth, self.height);
+                    [button addTarget:self action:@selector(leftButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+                    [self addSubview:button];
+                }
             }
         }
             break;
@@ -560,11 +625,11 @@
                 [UIView animateWithDuration:self.dragAnimationDuration animations:^{
                     self.contentView.frame = CGRectMake(-delta, self.contentView.top, self.contentView.width, self.contentView.height);
                     
-                    CGFloat p_delta = delta;
+                    CGFloat p_delta = 0.0f;
                     for(UIButton *button in self.rightActionButtons)
                     {
+                        p_delta = delta * (self.rightActionButtons.count - [self.rightActionButtons indexOfObject:button]) / self.rightActionButtons.count;
                         button.frame = CGRectMake(self.width - p_delta, 0.0f, self.buttonWidth + t_delta, self.height);
-                        p_delta -= delta / self.rightActionButtons.count;
                     }
                 }];
             }
@@ -575,11 +640,11 @@
             [UIView animateWithDuration:self.dragAnimationDuration animations:^{
                 self.contentView.frame = CGRectMake(- delta, self.contentView.top, self.contentView.width, self.contentView.height);
                 
-                CGFloat t_delta = delta;
+                CGFloat t_delta = 0.0f;
                 for(UIButton *button in self.rightActionButtons)
                 {
+                    t_delta = delta * (self.rightActionButtons.count - [self.rightActionButtons indexOfObject:button]) / self.rightActionButtons.count;
                     button.frame = CGRectMake(self.width - t_delta, 0.0f, self.buttonWidth, self.height);
-                    t_delta -= delta / self.rightActionButtons.count;
                 }
             }];
         }
@@ -642,6 +707,121 @@
                 return;
             }
             [self resetButtonsToDisplayPosition];
+        }
+    }
+}
+
+- (void)leftMenuAnimationEndpreviousIndex:(CGFloat)PreviousXIndex currentIndex:(CGFloat)CurrentXIndex
+{
+    // 判断特殊的删除情况
+    if([(UIButton *)self.leftActionButtons.lastObject width] > self.buttonWidth * self.leftActionButtons.count)
+    {
+        //[self actionTrigger:NO button:(SCTableViewCellRowActionButton *)self.leftActionButtons.lastObject];
+        //return;
+    }
+    
+    if(fabs(PreviousXIndex - CurrentXIndex) <= 3.0f)
+    {
+        if(!_isEditing)
+        {
+            // 由于把整个手势的检测判断都覆盖了，这里需要把系统的didSelect也重新实现一下
+            self.indexPath = [self.tableView indexPathForCell:self];
+            [self.tableView.delegate tableView:self.tableView didSelectRowAtIndexPath:self.indexPath];
+            return;
+        }
+        
+        // 并没有怎么移动
+        if(self.contentView.left > ScreenWidth / 3.0f)
+        {
+            // 需要还原到显示的位置
+            if(!_hasMoved)
+            {
+                return;
+            }
+            [self resetButtonsToDisplayPosition];
+        }
+        else
+        {
+            // 需要还原到初始位置
+            [self resetButtonsToOriginPosition];
+        }
+    }
+    else
+    {
+        if(CurrentXIndex < ScreenWidth / 3.0f)
+        {
+            // 需要还原到初始位置
+            [self resetButtonsToOriginPosition];
+        }
+        else
+        {
+            // 需要还原到显示的位置
+            if(!_hasMoved)
+            {
+                return;
+            }
+            [self resetButtonsToDisplayPosition];
+        }
+    }
+}
+
+- (void)leftMenuAnimation:(CGFloat)delta andCurrentIndexX:(CGFloat)CurrentXIndex
+{
+    if(delta < 0)
+    {
+        delta = - delta;
+        if(delta > ScreenWidth / 3.0f)
+        {
+            if(CurrentXIndex > ScreenWidth / 2.0f)
+            {
+                // 最后一个button需要变宽度了
+                if(delta > ScreenWidth / 2.0f)
+                {
+                    [UIView animateWithDuration:self.dragAnimationDuration animations:^{
+                        CGFloat t_x = CurrentXIndex;
+                        self.contentView.frame = CGRectMake(t_x, self.contentView.top, self.contentView.width, self.contentView.height);
+                        UIButton *lastOne = [self.leftActionButtons lastObject];
+                        lastOne.frame = CGRectMake(0.0f, 0.0f, t_x, self.height);
+                    }];
+                }
+                else
+                {
+                    // 位移量超过0像素才移动，这是保证只有右边的区域会出现
+                    [UIView animateWithDuration:self.dragAnimationDuration animations:^{
+                        CGFloat t_x = CurrentXIndex;
+                        self.contentView.frame = CGRectMake(t_x, self.contentView.top, self.contentView.width, self.contentView.height);
+                        UIButton *lastOne = [self.leftActionButtons lastObject];
+                        lastOne.frame = CGRectMake(0.0f, 0.0f,t_x, self.height);
+                    }];
+                }
+            }
+            else
+            {
+                CGFloat t_delta = (delta - (ScreenWidth / 3.0f))/ self.leftActionButtons.count;
+                [UIView animateWithDuration:self.dragAnimationDuration animations:^{
+                    self.contentView.frame = CGRectMake(delta, self.contentView.top, self.contentView.width, self.contentView.height);
+                    
+                    for(UIButton *button in self.leftActionButtons)
+                    {
+                        NSInteger index = [self.leftActionButtons indexOfObject:button];
+                        button.frame = CGRectMake((self.buttonWidth + t_delta) * (self.leftActionButtons.count - 1 -index), 0.0f, self.buttonWidth + t_delta, self.height);
+                    }
+                }];
+            }
+        }
+        else
+        {
+            // 位移量超过0像素才移动，这是保证只有右边的区域会出现
+            [UIView animateWithDuration:self.dragAnimationDuration animations:^{
+                self.contentView.frame = CGRectMake(delta, self.contentView.top, self.contentView.width, self.contentView.height);
+                
+                CGFloat t_delta = 0.0f;
+                for(UIButton *button in self.leftActionButtons)
+                {
+                    t_delta = delta * (self.leftActionButtons.count - [self.leftActionButtons indexOfObject:button]) / self.leftActionButtons.count;
+                    button.frame = CGRectMake( - self.buttonWidth + t_delta, 0.0f, self.buttonWidth, self.height);
+                }
+            }];
         }
     }
 }

@@ -24,7 +24,7 @@
     [self.navigationController.navigationBar setTranslucent:NO];
     self.navigationController.navigationBar.barTintColor = [UIColor lightGrayColor];
     [self hideExtraCellLine];
-    self.data = [NSMutableArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",nil];
+    self.data = [NSMutableArray arrayWithObjects:@"右侧菜单1",@"右侧菜单2",@"右侧菜单3",@"右侧菜单4",@"右侧菜单5",@"左侧菜单6",@"左侧菜单7",@"左侧菜单8",@"左侧菜单9",@"左侧菜单10",nil];
     self.view.backgroundColor = [UIColor lightGrayColor];
 }
 
@@ -71,12 +71,18 @@
 #pragma mark - SCTableViewCell Delegate
 - (SCTableViewCellStyle)SCTableView:(UITableView *)tableView editStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return SCTableViewCellStyleRight;
+    if(indexPath.row < 5)
+        return SCTableViewCellStyleRight;
+    else
+        return SCTableViewCellStyleLeft;
 }
 
 - (NSArray *)SCTableView:(UITableView *)tableView leftEditActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return @[];
+    SCTableViewCellRowActionButton *actionButton_3 = [[SCTableViewCellRowActionButton alloc]initWithTitle:@"标记已读" color:[UIColor blueColor] withActionBlock:^(NSIndexPath *t_indexPath){
+        NSLog(@"Left!");
+    }];
+    return @[actionButton_3];
 }
 
 - (NSArray *)SCTableView:(UITableView *)tableView rightEditActionsForRowAtIndexPath:(NSIndexPath *)indexPath

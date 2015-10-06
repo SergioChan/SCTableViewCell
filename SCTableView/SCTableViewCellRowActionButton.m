@@ -18,7 +18,9 @@
         self.backgroundColor = color;
         [self setTitle:title forState:UIControlStateNormal];
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        self.contentEdgeInsets = UIEdgeInsetsMake(0,15,0,0);
+        self.contentEdgeInsets = UIEdgeInsetsMake(0,10,0,0);
+        self.titleLabel.numberOfLines = 2;
+        //self.titleLabel.font = [UIFont systemFontOfSize:12.0f];
         self.actionCallBack = block;
     }
     return self;
