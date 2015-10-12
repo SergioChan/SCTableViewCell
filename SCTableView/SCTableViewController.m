@@ -80,7 +80,7 @@
 - (NSArray *)SCTableView:(UITableView *)tableView leftEditActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SCTableViewCellRowActionButton *actionButton_3 = [[SCTableViewCellRowActionButton alloc]initWithTitle:@"标记已读" color:[UIColor blueColor] withActionBlock:^(NSIndexPath *t_indexPath){
-        NSLog(@"Left!");
+        //
     }];
     return @[actionButton_3];
 }

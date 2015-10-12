@@ -136,6 +136,7 @@
         {
             btn.actionCallBack(self.indexPath);
         }
+        [self resetButtonsToOriginPosition];
     }
 }
 
@@ -716,8 +717,8 @@
     // 判断特殊的删除情况
     if([(UIButton *)self.leftActionButtons.lastObject width] > self.buttonWidth * self.leftActionButtons.count)
     {
-        //[self actionTrigger:NO button:(SCTableViewCellRowActionButton *)self.leftActionButtons.lastObject];
-        //return;
+        [self actionTrigger:NO button:(SCTableViewCellRowActionButton *)self.leftActionButtons.lastObject];
+        return;
     }
     
     if(fabs(PreviousXIndex - CurrentXIndex) <= 3.0f)
