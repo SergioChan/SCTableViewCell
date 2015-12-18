@@ -129,6 +129,7 @@
         {
             btn.actionCallBack(self.indexPath);
         }
+        [self resetButtonsToOriginPosition];
     }
     else
     {
