@@ -1,0 +1,6 @@
+framework module SCTableViewCell {
+  umbrella header "SCTableViewCell-umbrella.h"
+
+  export *
+  module * { export * }
+}
