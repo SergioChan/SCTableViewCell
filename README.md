@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/SCTableViewCell.svg?style=flat)](http://cocoapods.org/pods/SCTableViewCell)
 [![Platform](https://img.shields.io/cocoapods/p/SCTableViewCell.svg?style=flat)](http://cocoapods.org/pods/SCTableViewCell)
 
+Swipe-to-Delete Effects like iOS Native Mail App
+
 ## 效果 Visual Effects
 
 这是一个模仿iOS8中的邮箱里面的cell删除动效以及滑动右侧菜单按钮效果的开源库。
@@ -127,3 +129,7 @@ Sergio Chan, yuheng9211@qq.com
 ## License
 
 SCTableViewCell is available under the MIT license. See the LICENSE file for more info.
+=======
+## 证书 License
+MIT LICENSE
+>>>>>>> a6a357d446caea9fdf2facdefcd8c5e1d63fdfde
