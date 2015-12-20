@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		061A96CD8E779A526C00CCF5 /* Pods_SCTableViewCell_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A21B512C281D1AC64905FA6 /* Pods_SCTableViewCell_Example.framework */; };
 		49CBF7FB8CDD37605CB1C243 /* Pods_SCTableViewCell_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 852EBAA08BDA822E8C4FB60C /* Pods_SCTableViewCell_Tests.framework */; };
+		50ECE11D1C26BFDC00210D06 /* SCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50ECE11C1C26BFDC00210D06 /* SCTableViewController.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F59E195388D20070C39A /* SCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* SCAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* SCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* SCViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -38,7 +38,9 @@
 /* Begin PBXFileReference section */
 		02E4514F1A25B11B3C2B0A7E /* Pods-SCTableViewCell_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCTableViewCell_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SCTableViewCell_Example/Pods-SCTableViewCell_Example.release.xcconfig"; sourceTree = "<group>"; };
 		38509A290278F86E8615F197 /* SCTableViewCell.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SCTableViewCell.podspec; path = ../SCTableViewCell.podspec; sourceTree = "<group>"; };
-		6003F58A195388D20070C39A /* SCTableViewCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SCTableViewCell.app; path = SCTableViewCell_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		50ECE11B1C26BFDC00210D06 /* SCTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTableViewController.h; sourceTree = "<group>"; };
+		50ECE11C1C26BFDC00210D06 /* SCTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTableViewController.m; sourceTree = "<group>"; };
+		6003F58A195388D20070C39A /* SCTableViewCell_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCTableViewCell_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -48,10 +50,8 @@
 		6003F59B195388D20070C39A /* SCTableViewCell-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SCTableViewCell-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* SCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* SCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* SCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* SCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6003F5AE195388D20070C39A /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Tests.xctest; path = SCTableViewCell_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F5AE195388D20070C39A /* SCTableViewCell_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SCTableViewCell_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -108,8 +108,8 @@
 		6003F58B195388D20070C39A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6003F58A195388D20070C39A /* SCTableViewCell.app */,
-				6003F5AE195388D20070C39A /* Tests.xctest */,
+				6003F58A195388D20070C39A /* SCTableViewCell_Example.app */,
+				6003F5AE195388D20070C39A /* SCTableViewCell_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,11 +130,11 @@
 		6003F593195388D20070C39A /* Example for SCTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				50ECE11B1C26BFDC00210D06 /* SCTableViewController.h */,
+				50ECE11C1C26BFDC00210D06 /* SCTableViewController.m */,
 				6003F59C195388D20070C39A /* SCAppDelegate.h */,
 				6003F59D195388D20070C39A /* SCAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
-				6003F5A5195388D20070C39A /* SCViewController.h */,
-				6003F5A6195388D20070C39A /* SCViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -213,7 +213,7 @@
 			);
 			name = SCTableViewCell_Example;
 			productName = SCTableViewCell;
-			productReference = 6003F58A195388D20070C39A /* SCTableViewCell.app */;
+			productReference = 6003F58A195388D20070C39A /* SCTableViewCell_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6003F5AD195388D20070C39A /* SCTableViewCell_Tests */ = {
@@ -234,7 +234,7 @@
 			);
 			name = SCTableViewCell_Tests;
 			productName = SCTableViewCellTests;
-			productReference = 6003F5AE195388D20070C39A /* Tests.xctest */;
+			productReference = 6003F5AE195388D20070C39A /* SCTableViewCell_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -391,8 +391,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* SCAppDelegate.m in Sources */,
-				6003F5A7195388D20070C39A /* SCViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				50ECE11D1C26BFDC00210D06 /* SCTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,12 +511,13 @@
 			baseConfigurationReference = 6F5359764F8A28630B249A61 /* Pods-SCTableViewCell_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SCTableViewCell/SCTableViewCell-Prefix.pch";
 				INFOPLIST_FILE = "SCTableViewCell/SCTableViewCell-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -526,12 +527,13 @@
 			baseConfigurationReference = 02E4514F1A25B11B3C2B0A7E /* Pods-SCTableViewCell_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SCTableViewCell/SCTableViewCell-Prefix.pch";
 				INFOPLIST_FILE = "SCTableViewCell/SCTableViewCell-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

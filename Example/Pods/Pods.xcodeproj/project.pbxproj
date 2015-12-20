@@ -9,20 +9,20 @@
 /* Begin PBXBuildFile section */
 		09E9B343E09E6E5CF613E8AA37392238 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		1D257C607822390F450F7EC83F477223 /* Pods-SCTableViewCell_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DE82FAD64835D61A11EB13E53928E403 /* Pods-SCTableViewCell_Example-dummy.m */; };
-		3CC979B58080E2C2A0C32D3C0D6981C4 /* SCTableViewCell-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CDAF58AE4D4388D4603E1D0493E319 /* SCTableViewCell-dummy.m */; };
-		50ECE1131C26BD2B00210D06 /* SCTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ECE10F1C26BD2B00210D06 /* SCTableViewCell.h */; };
-		50ECE1141C26BD2B00210D06 /* SCTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 50ECE1101C26BD2B00210D06 /* SCTableViewCell.m */; };
-		50ECE1151C26BD2B00210D06 /* SCTableViewCellRowActionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ECE1111C26BD2B00210D06 /* SCTableViewCellRowActionButton.h */; };
-		50ECE1161C26BD2B00210D06 /* SCTableViewCellRowActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 50ECE1121C26BD2B00210D06 /* SCTableViewCellRowActionButton.m */; };
-		50ECE1191C26BD3400210D06 /* UIViewExt.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ECE1171C26BD3400210D06 /* UIViewExt.h */; };
-		50ECE11A1C26BD3400210D06 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 50ECE1181C26BD3400210D06 /* UIViewExt.m */; };
+		2AA14C80DAE178111F74A103501DB974 /* SCTableViewCell-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CDAF58AE4D4388D4603E1D0493E319 /* SCTableViewCell-dummy.m */; };
+		46E6E139E935C972B5EE42E7BDF776C8 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = C0459C870FD42C8A5BB0F1132A2636B2 /* UIViewExt.m */; };
+		4F3332B50282BD1C06F26D449610D33D /* SCTableViewCellRowActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F85A8ABF6A57C3CE893FAA47850DD92C /* SCTableViewCellRowActionButton.m */; };
 		5949A3FCB0A932B3DBD96C0A2EEB5EF0 /* SCTableViewCell.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BBD797EA4CE978CF6D17602B350A58F4 /* SCTableViewCell.bundle */; };
 		6194425BFC15B77261BE3A5E5AC8B6D7 /* Pods-SCTableViewCell_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF8D4F09813E87FE86691F313B52AE /* Pods-SCTableViewCell_Tests-dummy.m */; };
+		84E5234FD236D364C2F122B124A4C141 /* SCTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CC1CFB00EB2402E76759EF4D0AE183 /* SCTableViewCell.m */; };
 		9208C92FA2A8896183C83AB3281E65B4 /* Pods-SCTableViewCell_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 38F731284D297B7BE353E4608C29FFB9 /* Pods-SCTableViewCell_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E2608294E96B5E92749CF3B03E69697 /* SCTableViewCellRowActionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = A4E3003CCFFDA14347B8EC39020793FC /* SCTableViewCellRowActionButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F51595F8112BCBFDEDF1E0C5037FA26 /* Pods-SCTableViewCell_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DB0FA78613FD807082D72A5FE5551EE7 /* Pods-SCTableViewCell_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A1A02382D41489CEEFB4CFED4F528AAC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		B0373CFB1156BF2D44B5206124679EA0 /* SCTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 912136520C1197693010BFE7360076E3 /* SCTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE46AABC4D741D35E3513569CD3ABDCE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		EA577C3597A6E08C8551AAD42BE00E49 /* SCTableViewCell-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F8CD3351B308EF66EAC2814DDBA46BEF /* SCTableViewCell-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FBD7212461491D723ACE96012E3C212C /* SCTableViewCell-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F8CD3351B308EF66EAC2814DDBA46BEF /* SCTableViewCell-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFBEC7D6AB77B557647D657BEF10EAE3 /* UIViewExt.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A370D212C2FBF76519489A52E600E15 /* UIViewExt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,19 +50,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07CC1CFB00EB2402E76759EF4D0AE183 /* SCTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SCTableViewCell.m; sourceTree = "<group>"; };
 		0FD3C3216BB33FB9DC1AC5EFBC7C5382 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A370D212C2FBF76519489A52E600E15 /* UIViewExt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		38F731284D297B7BE353E4608C29FFB9 /* Pods-SCTableViewCell_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SCTableViewCell_Tests-umbrella.h"; sourceTree = "<group>"; };
 		3A5E9F426D9185D0106328F335D16993 /* Pods-SCTableViewCell_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SCTableViewCell_Example.modulemap"; sourceTree = "<group>"; };
 		3B0EE304DA6C7A8F2C49E382227F9E80 /* Pods-SCTableViewCell_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCTableViewCell_Example.release.xcconfig"; sourceTree = "<group>"; };
 		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		443B7ADBF981D8DC9794D6B83335B3E6 /* Pods-SCTableViewCell_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SCTableViewCell_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		4F28477A4B17294CBE876D94C755DEAC /* SCTableViewCell-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SCTableViewCell-prefix.pch"; sourceTree = "<group>"; };
-		50ECE10F1C26BD2B00210D06 /* SCTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTableViewCell.h; sourceTree = "<group>"; };
-		50ECE1101C26BD2B00210D06 /* SCTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTableViewCell.m; sourceTree = "<group>"; };
-		50ECE1111C26BD2B00210D06 /* SCTableViewCellRowActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTableViewCellRowActionButton.h; sourceTree = "<group>"; };
-		50ECE1121C26BD2B00210D06 /* SCTableViewCellRowActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTableViewCellRowActionButton.m; sourceTree = "<group>"; };
-		50ECE1171C26BD3400210D06 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
-		50ECE1181C26BD3400210D06 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
 		537D02A71DB19FB4AAE7DCACE459AAA6 /* SCTableViewCell.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SCTableViewCell.modulemap; sourceTree = "<group>"; };
 		5449E1EC4C67BA00D40D61028C5548D3 /* Pods-SCTableViewCell_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCTableViewCell_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		588CB71734781F839FEC754E4DC17275 /* Pods-SCTableViewCell_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SCTableViewCell_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -70,14 +66,17 @@
 		85CF0CB3ACD9FC9F8B0D125BCE14C062 /* Pods-SCTableViewCell_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCTableViewCell_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8688E7EF87F09D939EEE87FAF730E568 /* SCTableViewCell.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SCTableViewCell.xcconfig; sourceTree = "<group>"; };
 		8A9318DC796B9C2488A9DBB2D5F49538 /* Pods-SCTableViewCell_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SCTableViewCell_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		912136520C1197693010BFE7360076E3 /* SCTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SCTableViewCell.h; sourceTree = "<group>"; };
 		93CDAF58AE4D4388D4603E1D0493E319 /* SCTableViewCell-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SCTableViewCell-dummy.m"; sourceTree = "<group>"; };
 		96B9E23D83B12ECA4E30F39019324653 /* Pods-SCTableViewCell_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SCTableViewCell_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		9B6BA725F54F951A871B5B39D3DBBF17 /* SCTableViewCell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SCTableViewCell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4E3003CCFFDA14347B8EC39020793FC /* SCTableViewCellRowActionButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SCTableViewCellRowActionButton.h; sourceTree = "<group>"; };
 		B2AF8D4F09813E87FE86691F313B52AE /* Pods-SCTableViewCell_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SCTableViewCell_Tests-dummy.m"; sourceTree = "<group>"; };
 		B650AFDFAB47910C93F27150E4E0855B /* Pods-SCTableViewCell_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SCTableViewCell_Example-frameworks.sh"; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BBD797EA4CE978CF6D17602B350A58F4 /* SCTableViewCell.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SCTableViewCell.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9D2F63C7AE04F7EFC20AFC7F6EA40E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0459C870FD42C8A5BB0F1132A2636B2 /* UIViewExt.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
 		D39BF4FF42DDF09ED8814A590BCD2963 /* Pods-SCTableViewCell_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SCTableViewCell_Tests-resources.sh"; sourceTree = "<group>"; };
 		D5CAAD14BA5D1441EDFB76B7FC50B0ED /* Pods-SCTableViewCell_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCTableViewCell_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D74CA0BD9DA1B4650B737A9A22022A5A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +85,7 @@
 		DEC8863E037FB70ED11B33F008A8DBEE /* Pods-SCTableViewCell_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SCTableViewCell_Example-resources.sh"; sourceTree = "<group>"; };
 		DEFED6A861B1984C8078AD63C2DB518C /* Pods-SCTableViewCell_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SCTableViewCell_Tests.modulemap"; sourceTree = "<group>"; };
 		EDAB2590802105C243D31E9FF38D91A0 /* Pods_SCTableViewCell_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCTableViewCell_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F85A8ABF6A57C3CE893FAA47850DD92C /* SCTableViewCellRowActionButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SCTableViewCellRowActionButton.m; sourceTree = "<group>"; };
 		F8CD3351B308EF66EAC2814DDBA46BEF /* SCTableViewCell-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SCTableViewCell-umbrella.h"; sourceTree = "<group>"; };
 		F927542B82F123188C8F0954F5B6C3E5 /* Pods-SCTableViewCell_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SCTableViewCell_Tests-frameworks.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,7 +128,7 @@
 		004CB798067D2F50884D1FBC3A5742DC /* SCTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				87F8C27749CE625CF6B4D245392590C7 /* Pod */,
+				8B5422CD0187208A54FAF6AD3EB79031 /* Pod */,
 				DDA6C54EEFBAEDFDA91510AB298F2F19 /* Support Files */,
 			);
 			name = SCTableViewCell;
@@ -175,10 +175,10 @@
 			);
 			sourceTree = "<group>";
 		};
-		87F8C27749CE625CF6B4D245392590C7 /* Pod */ = {
+		8B5422CD0187208A54FAF6AD3EB79031 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				CDBE0D679B814339CC93A40D403E1ED4 /* Classes */,
+				C8D133EA34F191C9C3F58AEF10599778 /* Classes */,
 			);
 			path = Pod;
 			sourceTree = "<group>";
@@ -208,15 +208,15 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		CDBE0D679B814339CC93A40D403E1ED4 /* Classes */ = {
+		C8D133EA34F191C9C3F58AEF10599778 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				50ECE1171C26BD3400210D06 /* UIViewExt.h */,
-				50ECE1181C26BD3400210D06 /* UIViewExt.m */,
-				50ECE10F1C26BD2B00210D06 /* SCTableViewCell.h */,
-				50ECE1101C26BD2B00210D06 /* SCTableViewCell.m */,
-				50ECE1111C26BD2B00210D06 /* SCTableViewCellRowActionButton.h */,
-				50ECE1121C26BD2B00210D06 /* SCTableViewCellRowActionButton.m */,
+				912136520C1197693010BFE7360076E3 /* SCTableViewCell.h */,
+				07CC1CFB00EB2402E76759EF4D0AE183 /* SCTableViewCell.m */,
+				A4E3003CCFFDA14347B8EC39020793FC /* SCTableViewCellRowActionButton.h */,
+				F85A8ABF6A57C3CE893FAA47850DD92C /* SCTableViewCellRowActionButton.m */,
+				1A370D212C2FBF76519489A52E600E15 /* UIViewExt.h */,
+				C0459C870FD42C8A5BB0F1132A2636B2 /* UIViewExt.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -280,14 +280,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B0C19526ACDBA87742C6508F2F86B9F9 /* Headers */ = {
+		CBD3BCA4DC67EE4E6765A24D232E17C2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50ECE1131C26BD2B00210D06 /* SCTableViewCell.h in Headers */,
-				50ECE1151C26BD2B00210D06 /* SCTableViewCellRowActionButton.h in Headers */,
-				EA577C3597A6E08C8551AAD42BE00E49 /* SCTableViewCell-umbrella.h in Headers */,
-				50ECE1191C26BD3400210D06 /* UIViewExt.h in Headers */,
+				FBD7212461491D723ACE96012E3C212C /* SCTableViewCell-umbrella.h in Headers */,
+				B0373CFB1156BF2D44B5206124679EA0 /* SCTableViewCell.h in Headers */,
+				9E2608294E96B5E92749CF3B03E69697 /* SCTableViewCellRowActionButton.h in Headers */,
+				FFBEC7D6AB77B557647D657BEF10EAE3 /* UIViewExt.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,10 +298,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63EA2BCB0C0B3141B0E36F7188F2FC8C /* Build configuration list for PBXNativeTarget "SCTableViewCell" */;
 			buildPhases = (
-				1F47B577ACE2C55AA4A8C4D6992A7997 /* Sources */,
+				F5735C215499AF6BD7D2EDA689676FAE /* Sources */,
 				F7B17084B84CA5092353BC46DEDA704D /* Frameworks */,
 				A28702906D8CB66826CD1BFE2A9C228A /* Resources */,
-				B0C19526ACDBA87742C6508F2F86B9F9 /* Headers */,
+				CBD3BCA4DC67EE4E6765A24D232E17C2 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -422,17 +422,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1F47B577ACE2C55AA4A8C4D6992A7997 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				50ECE11A1C26BD3400210D06 /* UIViewExt.m in Sources */,
-				3CC979B58080E2C2A0C32D3C0D6981C4 /* SCTableViewCell-dummy.m in Sources */,
-				50ECE1141C26BD2B00210D06 /* SCTableViewCell.m in Sources */,
-				50ECE1161C26BD2B00210D06 /* SCTableViewCellRowActionButton.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C3015ED4BEAA6D03F696A92A5381CC78 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -445,6 +434,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D257C607822390F450F7EC83F477223 /* Pods-SCTableViewCell_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5735C215499AF6BD7D2EDA689676FAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AA14C80DAE178111F74A103501DB974 /* SCTableViewCell-dummy.m in Sources */,
+				84E5234FD236D364C2F122B124A4C141 /* SCTableViewCell.m in Sources */,
+				4F3332B50282BD1C06F26D449610D33D /* SCTableViewCellRowActionButton.m in Sources */,
+				46E6E139E935C972B5EE42E7BDF776C8 /* UIViewExt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,41 +472,145 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		03CA91998D6773EC5D02B3DB87B8353E /* Release */ = {
+		06E5B2C0A2E0C240444D710E653D96B8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8688E7EF87F09D939EEE87FAF730E568 /* SCTableViewCell.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SCTableViewCell/SCTableViewCell-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SCTableViewCell/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SCTableViewCell/SCTableViewCell.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SCTableViewCell;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		0B57334D6C23DADAA4F7D802A5760EB2 /* Debug */ = {
+		67240E89B0E3305472C4D025CBD7583D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5449E1EC4C67BA00D40D61028C5548D3 /* Pods-SCTableViewCell_Example.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SCTableViewCell_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SCTableViewCell_Example/Pods-SCTableViewCell_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_SCTableViewCell_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		77A97E133701C627D9F1B8867CCFABE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8688E7EF87F09D939EEE87FAF730E568 /* SCTableViewCell.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = SCTableViewCell;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		8C94F3482D2EC850E65A313CABC5F45E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8688E7EF87F09D939EEE87FAF730E568 /* SCTableViewCell.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SCTableViewCell/SCTableViewCell-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SCTableViewCell/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SCTableViewCell/SCTableViewCell.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SCTableViewCell;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8EE205B08F13EC7C6E77EAE7C084E025 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8688E7EF87F09D939EEE87FAF730E568 /* SCTableViewCell.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = SCTableViewCell;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		A289484F923DE111CDDB66C1A90216E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B0EE304DA6C7A8F2C49E382227F9E80 /* Pods-SCTableViewCell_Example.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SCTableViewCell_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SCTableViewCell_Example/Pods-SCTableViewCell_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_SCTableViewCell_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -538,14 +642,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		12B350F0B449ECF20C12C1C97418B4B2 /* Release */ = {
+		CD2E849DDAC95C209BFFDEC677B98AFB /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 85CF0CB3ACD9FC9F8B0D125BCE14C062 /* Pods-SCTableViewCell_Tests.release.xcconfig */;
 			buildSettings = {
@@ -558,7 +662,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-SCTableViewCell_Tests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCTableViewCell_Tests/Pods-SCTableViewCell_Tests.modulemap";
@@ -575,91 +679,7 @@
 			};
 			name = Release;
 		};
-		5BCB29FAECD24A752B393311C4009292 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5449E1EC4C67BA00D40D61028C5548D3 /* Pods-SCTableViewCell_Example.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SCTableViewCell_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SCTableViewCell_Example/Pods-SCTableViewCell_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_SCTableViewCell_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		62F5FE9E2A4136442B4FDCBFA8E57D14 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B0EE304DA6C7A8F2C49E382227F9E80 /* Pods-SCTableViewCell_Example.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SCTableViewCell_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SCTableViewCell_Example/Pods-SCTableViewCell_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_SCTableViewCell_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		77A97E133701C627D9F1B8867CCFABE7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8688E7EF87F09D939EEE87FAF730E568 /* SCTableViewCell.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = SCTableViewCell;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		8EE205B08F13EC7C6E77EAE7C084E025 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8688E7EF87F09D939EEE87FAF730E568 /* SCTableViewCell.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = SCTableViewCell;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		F0CD653868231E284AA60909EE371D24 /* Debug */ = {
+		CE97AD671FF397B9F9B896D2CAAFE602 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D5CAAD14BA5D1441EDFB76B7FC50B0ED /* Pods-SCTableViewCell_Tests.debug.xcconfig */;
 			buildSettings = {
@@ -672,7 +692,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-SCTableViewCell_Tests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCTableViewCell_Tests/Pods-SCTableViewCell_Tests.modulemap";
@@ -689,59 +709,39 @@
 			};
 			name = Debug;
 		};
-		F917E399FA89210C3538E7879DB9C3FA /* Release */ = {
+		FB45FFD90572718D82AB9092B750F0CA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8688E7EF87F09D939EEE87FAF730E568 /* SCTableViewCell.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SCTableViewCell/SCTableViewCell-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SCTableViewCell/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SCTableViewCell/SCTableViewCell.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SCTableViewCell;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
-		};
-		FF8F66572630DFB298EBA23A11628B60 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8688E7EF87F09D939EEE87FAF730E568 /* SCTableViewCell.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SCTableViewCell/SCTableViewCell-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SCTableViewCell/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SCTableViewCell/SCTableViewCell.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SCTableViewCell;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -749,8 +749,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0B57334D6C23DADAA4F7D802A5760EB2 /* Debug */,
-				03CA91998D6773EC5D02B3DB87B8353E /* Release */,
+				A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */,
+				FB45FFD90572718D82AB9092B750F0CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -767,8 +767,8 @@
 		532BB6A875AA765275F9412500ADE046 /* Build configuration list for PBXNativeTarget "Pods-SCTableViewCell_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5BCB29FAECD24A752B393311C4009292 /* Debug */,
-				62F5FE9E2A4136442B4FDCBFA8E57D14 /* Release */,
+				67240E89B0E3305472C4D025CBD7583D /* Debug */,
+				A289484F923DE111CDDB66C1A90216E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -776,8 +776,8 @@
 		63EA2BCB0C0B3141B0E36F7188F2FC8C /* Build configuration list for PBXNativeTarget "SCTableViewCell" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FF8F66572630DFB298EBA23A11628B60 /* Debug */,
-				F917E399FA89210C3538E7879DB9C3FA /* Release */,
+				8C94F3482D2EC850E65A313CABC5F45E /* Debug */,
+				06E5B2C0A2E0C240444D710E653D96B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -785,8 +785,8 @@
 		87CD5F84816039CC3C7A8DD53DF00E00 /* Build configuration list for PBXNativeTarget "Pods-SCTableViewCell_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F0CD653868231E284AA60909EE371D24 /* Debug */,
-				12B350F0B449ECF20C12C1C97418B4B2 /* Release */,
+				CE97AD671FF397B9F9B896D2CAAFE602 /* Debug */,
+				CD2E849DDAC95C209BFFDEC677B98AFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
